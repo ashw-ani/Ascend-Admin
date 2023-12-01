@@ -7,11 +7,8 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 // import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "../Login/Login";
-import Profile from "../Profile/Profile";
-import { useMyContext } from "../../Context/PanelContext";
 
-import Progressindiactor from "../UI/course progress indicator/Progressindicator";
-import { useState } from "react";
+import { useMyContext } from "../../Context/PanelContext";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -44,11 +41,6 @@ const Body = (props) => {
         <Route path="/leaderboard/water-enthusiasts" exact>
           <Header>Water Enthusiasts</Header>
           <Leaderboard />
-        </Route>
-
-        <Route path="/profile">
-          <Header>Profile</Header>
-          <Profile />
         </Route>
       </Switch>
     </div>
