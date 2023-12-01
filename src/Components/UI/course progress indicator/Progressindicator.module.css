@@ -1,0 +1,65 @@
+.Progressindiactor{
+  margin-right: 1rem;
+}
+
+
+.Parentdiv {
+  height: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  border: 1.5px solid black;
+  display: flex; 
+  margin-bottom: 1rem;
+
+}
+.progressheading{
+  display: flex;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  color: #161A37;
+  font-weight: 900;
+}
+.Childdiv{
+  height: '100%';
+  text-align: 'right';
+  border-radius: 2rem;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progresstext {
+  padding: 10;
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  color: #161A37;
+  font-weight: 900;
+}
+.progressheadingPhone{
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+  justify-content: space-between;
+  color: #161A37;
+  font-weight: 900;
+}
+.progresstextPhone{
+  color: #161A37;
+  display: flex;
+  flex-direction: row;
+  font-weight: 900;
+  justify-content: right;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+.ParentdivPhone{
+  height: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  border: 1.5px solid black;
+  display: flex; 
+  /* margin-bottom: 1rem; */
+}
