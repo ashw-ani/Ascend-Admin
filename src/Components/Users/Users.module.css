@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
-
+.container{
+  margin:1rem 1rem 1rem 1rem;
+  height: 100%;
+}
 .userBody{
     width: 100%;
     display: flex;
@@ -8,6 +11,16 @@
     justify-content: stretch;
     align-items: center;
     height: 20%;
+}
+
+
+
+.userList{
+  width:93.5%;
+  /* height: 70%; */
+  border: 1px solid rgb(50, 50, 50);
+  margin: 2rem 0rem 0rem 1rem;
+  background-color: white;
 }
 
 
