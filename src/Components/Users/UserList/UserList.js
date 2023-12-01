@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react'
 import styles from './UserList.module.css'
 import GetUsers from '../../../api/getUsers';
 
-export default function UserList() {
-  const [UsersData,setUsersData] = useState();
-  const [page,setPage] = useState(1);
+export default function UserList({ setpageEndHandler, page }) {
+  const [UsersData, setUsersData] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     const collectData = async () => {
-    const Data = await GetUsers(page);
-    console.log(Data);
-    setUsersData(Data);
+      const Data = await GetUsers(page);
+      console.log(Data);
+      setUsersData(Data.contacts);
+      if (Data?.dataEnd) {
+        setpageEndHandler();
+      }
     };
     collectData();
 
-  },[page]);
+  }, [page]);
   return (
     <div className={styles.users}>
       <table className={styles.customers} width="100%">

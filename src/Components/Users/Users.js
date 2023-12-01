@@ -2,22 +2,45 @@ import SearchBar from '../UI/Search Bar/SearchBar';
 import styles from './Users.module.css'
 import Button from '../UI/Search Bar/button';
 import { useEffect, useState } from 'react';
-import UserList from './UserList/UserList';
+import UserList from './UserList/UserList'
 
 
-function Users(props){
-    const [findUser,setFindUser] = useState();
+function Users(props) {
+    const [findUser, setFindUser] = useState();
+    const [page, setPage] = useState(1);
+    const [pageEnd, setpageEnd] = useState(false);
+
     const onSubmitHandler = () => {
     }
+    const nextButtonHandler = () => {
+        const nextVal = page + 1;
+        setPage(nextVal);
+        console.log("handu",pageEnd);
+
+    }
+    const prevButtonHandler = () => {
+        if (page > 1) {
+            const prevVal = page - 1;
+            setPage(prevVal);
+        }
+    }
+    const setpageEndHandler = () =>{
+        setpageEnd(true);
+    }
     return (<div className={styles.container}>
-    <div className={styles.userBody}>
-        <SearchBar setFindUser={setFindUser}  placeholderText="Search for the user"/>
-        <Button onClick={onSubmitHandler} text="Search"/>
-    </div>
-    <div className={styles.userList}>
-        <UserList />
-    </div>
-    </div>);   
+        <div className={styles.userBody}>
+            <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
+            <Button onClick={onSubmitHandler} text="Search" />
+        </div>
+        <div className={styles.pageButtonDiv}>
+            <span>Page {page}</span>
+            <button className={styles.pageButtons} onClick={prevButtonHandler}>{'<'}</button>
+            {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
+        </div>
+        <div className={styles.userList}>
+            <UserList setpageEndHandler={setpageEndHandler} page={page} />
+        </div>
+    </div>);
 }
 
 
