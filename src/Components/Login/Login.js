@@ -26,7 +26,7 @@ const Login = () => {
 
   const formChangeHandler = (event) => {
     setFormDetails((prevState) => {
-      if (event.target.name == "rememberMe") {
+      if (event.target.name === "rememberMe") {
         return { ...prevState, [event.target.name]: event.target.checked };
       }
       return { ...prevState, [event.target.name]: event.target.value };

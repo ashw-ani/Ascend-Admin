@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "../Login/Login";
 
 import { useMyContext } from "../../Context/PanelContext";
+import Users from "../Users/Users";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -31,6 +32,7 @@ const Body = (props) => {
         </Route>
         <Route path="/users" exact>
           <Header>User</Header>
+          <Users />
         </Route>
         <Route path="/courses" exact>
           <Header>Courses</Header>

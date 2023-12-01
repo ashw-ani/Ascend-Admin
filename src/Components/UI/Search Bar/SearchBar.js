@@ -2,9 +2,15 @@ import { useState } from 'react';
 import styles from './SearchBar.module.css';
 
 function SearchBar(props){
+    const handleUserSearch = (event)=>{
+        if(event.target.name==="user")
+        {
+            props.setFindUser(event.target.value);
+        }
+    }
     return (
         <div className={styles.searchInputDiv}>
-            <input className={styles.searchInput} placeholder={props.placeholderText}/>
+            <input name='user' onChange={handleUserSearch} className={styles.searchInput} placeholder={props.placeholderText}/>
         </div>
     );
 };

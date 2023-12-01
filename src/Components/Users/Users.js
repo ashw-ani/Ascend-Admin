@@ -5,12 +5,16 @@ import { useState } from 'react';
 
 
 function Users(props){
-    const [findUser,setFindUser] = useState('');
+    const [findUser,setFindUser] = useState();
+    const onSubmitHandler = () => {
+        console.log(findUser);
+    }
     return (<>
     <div className={styles.userBody}>
-        <SearchBar  placeholderText="Search for the user"/>
-        <Button text="Search"/>
+        <SearchBar setFindUser={setFindUser}  placeholderText="Search for the user"/>
+        <Button onClick={onSubmitHandler} text="Search"/>
     </div>
+    <div className={styles.userList}></div>
     </>);   
 }
 
