@@ -1,10 +1,5 @@
 import styles from "./Body.module.css";
 import Header from "./Header/Header";
-import Chartcontainer from "./chartcontainer/Chartcontainer";
-import Dashboardintro from "./dashboardintro/Dashboardintro";
-import Statscontainer from "./statscontainer/Statscontainer";
-import Leaderboard from "../Leaderboard/Leaderboard";
-// import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "../Login/Login";
 
@@ -33,14 +28,12 @@ const Body = (props) => {
       <Switch>
         <Route path="/dashboard" exact>
           <Header>Dashboard</Header>
-          <Dashboardintro />
-          <Statscontainer />
-          <Chartcontainer />
         </Route>
-
-        <Route path="/leaderboard/water-enthusiasts" exact>
-          <Header>Water Enthusiasts</Header>
-          <Leaderboard />
+        <Route path="/users" exact>
+          <Header>User</Header>
+        </Route>
+        <Route path="/courses" exact>
+          <Header>Courses</Header>
         </Route>
       </Switch>
     </div>
