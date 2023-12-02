@@ -5,7 +5,37 @@
   .tableColumn{
     border: 1px solid black;
   }
+/* Css for spinner loading button */
+.spinnerDiv{
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000000000;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.208);
+  position:absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  width: 10%;
+  height: 10%;
+}
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
   .customers {
     font-family: Arial, Helvetica, sans-serif;
@@ -18,7 +48,7 @@
     padding: 8px;
   }
   
-  .customers tr:nth-child(even){background-color: #f2f2f2;}
+  .customers tr:nth-child(even){background-color: rgb(241, 254, 255);}
   
   .customers tr:hover {background-color: #ddd;}
   

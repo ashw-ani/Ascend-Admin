@@ -3,6 +3,8 @@
 .container{
   margin:1rem 1rem 1rem 1rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .userBody{
     width: 100%;
@@ -12,12 +14,33 @@
     align-items: center;
     height: 20%;
 }
+.pageButtonDiv{
+  display: flex;
+  justify-content: end;
+  margin: 1rem 2rem 0rem 0rem;
+}
+.pageButtons{
+   justify-content: end;
+   background-color: #f45b69;
+   color: white;
+   border: 0;
+   font-size: large;
+   margin-right: 1rem;
+  margin-left: 1rem;
 
+}
+.pageButtons:hover{
+  cursor: pointer;
+  background-color: #f24353;
+}
+
+.pageButtonDisabled{
+  background-color: grey;
+}
 
 
 .userList{
   width:93.5%;
-  /* height: 70%; */
   border: 1px solid rgb(50, 50, 50);
   margin: 2rem 0rem 0rem 1rem;
   background-color: white;
