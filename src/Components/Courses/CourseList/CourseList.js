@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./CourseList.module.css";
 import getCourses from "../../../api/getCourses";
 
-export default function CourseList() {
+export default function CourseList(props) {
   const [courseData, setCourseData] = useState();
-  const [page, setPage] = useState(1);
+  //   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const collectCourse = async () => {
-      const Data = await getCourses("");
-      console.log("incoming data", Data);
+      //   console.log(props.filterTier);
+      const Data = await getCourses(`${props.filterTier}`);
+      //   console.log("incoming data", Data);
       setCourseData(Data);
     };
     collectCourse();
-  }, []);
+  }, [props.filterTier]);
   return (
     <div className={styles.users}>
       <table className={styles.customers} width="100%">
