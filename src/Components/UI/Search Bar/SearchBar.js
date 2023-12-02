@@ -10,7 +10,7 @@ function SearchBar(props){
     }
     return (
         <div className={styles.searchInputDiv}>
-            <input name='user' onChange={handleUserSearch} className={styles.searchInput} placeholder={props.placeholderText}/>
+            <input required name='user' onChange={handleUserSearch} className={styles.searchInput} placeholder={props.placeholderText}/>
         </div>
     );
 };
