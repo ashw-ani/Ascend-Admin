@@ -13,6 +13,7 @@ import { SiBookstack } from "react-icons/si";
 import { useHistory } from "react-router-dom";
 import { useMyContext } from "../../Context/PanelContext";
 import { FaUsers } from "react-icons/fa";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const Sidepanel = (props) => {
   const [sideItemsWithMenu, setsideItemsWithMenu] = useState({});
@@ -29,7 +30,10 @@ const Sidepanel = (props) => {
     updateShowPaneltouch((prevState) => !prevState);
     toggleVisibility();
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
   const onClickDashboard = () => {
     navigation.push("/");
     console.log("return the props", props);
@@ -105,6 +109,18 @@ const Sidepanel = (props) => {
         >
           <SiBookstack className={styles.sidepanelicons} name={"courses"} />
           Courses
+        </SidepanelItem>
+
+        <SidepanelItem
+          class={sideItemsWithoutMenu.logout ? "active" : "inactive"}
+          onclick={(event) => {
+            withoutMenuItemsHandler(event);
+            handleLogout();
+          }}
+          name={"logout"}
+        >
+          <IoIosCloseCircle className={styles.sidepanelicons} />
+          LogOut
         </SidepanelItem>
       </div>
     </div>

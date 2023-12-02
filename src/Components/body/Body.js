@@ -1,6 +1,7 @@
 import styles from "./Body.module.css";
 import Header from "./Header/Header";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
+import Courses from "../Courses/Courses";
 import Login from "../Login/Login";
 
 import { useMyContext } from "../../Context/PanelContext";
@@ -36,6 +37,7 @@ const Body = (props) => {
         </Route>
         <Route path="/courses" exact>
           <Header>Courses</Header>
+          <Courses />
         </Route>
       </Switch>
     </div>
