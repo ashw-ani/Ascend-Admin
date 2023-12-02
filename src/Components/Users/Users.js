@@ -15,11 +15,14 @@ function Users(props) {
 
     const onSubmitHandler = async () => {
         const type = selectedValue;
+        console.log('====================================');
+        console.log("here from submit handler",findUser,selectedValue);
+        console.log('====================================');
         const Data = await FetchUsers(findUser,type);
         console.log('====================================');
         console.log("given data",Data);
         console.log('====================================');
-        setSearchData(Data);
+        setSearchData(Data[0]);
     }
     const nextButtonHandler = () => {
         const nextVal = page + 1;
@@ -41,13 +44,13 @@ function Users(props) {
     return (<div className={styles.container}>
         <div className={styles.userBody}>
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
-            <div>
+            <div className={styles.dropdown}>
                 <label htmlFor="myDropdown">Search By :</label>
                 <select id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
                     <option value="">Select an option</option>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
-                    <option value="fullName">Name</option>
+                    <option value="name">Name</option>
                 </select>
             </div>
             <Button onClick={onSubmitHandler} text="Search" />
