@@ -11,10 +11,15 @@ function Users(props) {
     const [page, setPage] = useState(1);
     const [pageEnd, setpageEnd] = useState(false);
     const [searchData, setSearchData] = useState();
+    const [selectedValue, setSelectedValue] = useState('');
 
-    const onSubmitHandler = (event) => {
-       const Data = FetchUsers(event.target.value);
-        setSearchData(searchData);
+    const onSubmitHandler = async () => {
+        const type = selectedValue;
+        const Data = await FetchUsers(findUser,type);
+        console.log('====================================');
+        console.log("given data",Data);
+        console.log('====================================');
+        setSearchData(Data);
     }
     const nextButtonHandler = () => {
         const nextVal = page + 1;
@@ -27,12 +32,24 @@ function Users(props) {
             setpageEnd(false);
         }
     }
-    const setpageEndHandler = () =>{
+    const setpageEndHandler = () => {
         setpageEnd(true);
     }
+    const handleSelectChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
     return (<div className={styles.container}>
         <div className={styles.userBody}>
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
+            <div>
+                <label htmlFor="myDropdown">Search By :</label>
+                <select id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
+                    <option value="">Select an option</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="fullName">Name</option>
+                </select>
+            </div>
             <Button onClick={onSubmitHandler} text="Search" />
         </div>
         <div className={styles.pageButtonDiv}>
@@ -41,7 +58,7 @@ function Users(props) {
             {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
         </div>
         <div className={styles.userList}>
-            <UserList searchData={searchData}  setpageEndHandler={setpageEndHandler} page={page} />
+            <UserList searchData={searchData} setpageEndHandler={setpageEndHandler} page={page} />
         </div>
     </div>);
 }

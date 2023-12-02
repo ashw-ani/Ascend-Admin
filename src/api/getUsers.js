@@ -4,7 +4,6 @@ const GetUsers = async (page) => {
         }
     );
     const UsersData = await Users.json();
-    console.log(UsersData);
     return UsersData;
 
 }

@@ -1,12 +1,9 @@
-const FetchUsers = async (findUser,type) => {
+const UpdateUser = async (user) => {
     var myHeaders = new Headers();
     myHeaders.append("api-key", "123456");
     myHeaders.append("Content-Type", "application/json");
     
-    var raw = JSON.stringify({
-      "search": findUser,
-      "type":type
-    });
+    var raw = JSON.stringify(user);
     
     var requestOptions = {
       method: 'POST',
@@ -15,15 +12,12 @@ const FetchUsers = async (findUser,type) => {
       redirect: 'follow'
     };
     
-    const Users = await fetch("https://ascend-server.onrender.com/api/admin/contact/getDetails", requestOptions);
+    const Users = await fetch("https://ascend-server.onrender.com/api/admin/contacts/updateDetails", requestOptions);
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
     const data = await Users.json();
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
     return data;
 
 }
-export default FetchUsers;
+export default UpdateUser;
