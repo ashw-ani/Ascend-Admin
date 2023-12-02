@@ -3,25 +3,28 @@ import styles from './Users.module.css'
 import Button from '../UI/Search Bar/button';
 import { useEffect, useState } from 'react';
 import UserList from './UserList/UserList'
+import FetchUsers from '../../api/FetchUsers';
 
 
 function Users(props) {
     const [findUser, setFindUser] = useState();
     const [page, setPage] = useState(1);
     const [pageEnd, setpageEnd] = useState(false);
+    const [searchData, setSearchData] = useState();
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = (event) => {
+       const Data = FetchUsers(event.target.value);
+        setSearchData(searchData);
     }
     const nextButtonHandler = () => {
         const nextVal = page + 1;
         setPage(nextVal);
-        console.log("handu",pageEnd);
-
     }
     const prevButtonHandler = () => {
         if (page > 1) {
             const prevVal = page - 1;
             setPage(prevVal);
+            setpageEnd(false);
         }
     }
     const setpageEndHandler = () =>{
@@ -38,7 +41,7 @@ function Users(props) {
             {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
         </div>
         <div className={styles.userList}>
-            <UserList setpageEndHandler={setpageEndHandler} page={page} />
+            <UserList searchData={searchData}  setpageEndHandler={setpageEndHandler} page={page} />
         </div>
     </div>);
 }
