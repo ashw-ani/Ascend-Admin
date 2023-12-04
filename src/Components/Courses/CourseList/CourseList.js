@@ -4,7 +4,10 @@ import getCourses from "../../../api/getCourses";
 import { ReactComponent as Loader } from "../../../assets/signInButton.svg";
 
 export default function CourseList(props) {
-  const [courseData, setCourseData] = useState();
+  const [courseData, setCourseData] = useState({
+    courses: null,
+    noData: null,
+  });
   const [loader, setLoader] = useState(false);
 
   //   const [page, setPage] = useState(1);
@@ -44,7 +47,7 @@ export default function CourseList(props) {
           </tr>
         </thead>
         <tbody>
-          {courseData.noData ? <h1>No Data</h1> : ""}
+          {/* {courseData.noData ? <h1>No Data</h1> : ""} */}
           {courseData.courses?.map((item) => (
             <tr key={item._id}>
               <td className={styles.tableColumn}>{item.course_id}</td>

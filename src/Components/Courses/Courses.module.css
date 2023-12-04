@@ -17,6 +17,7 @@
   justify-content: stretch;
   align-items: center;
   height: 10%;
+  gap: 1rem;
 }
 
 .courseList {
