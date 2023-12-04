@@ -13,15 +13,15 @@ function Users(props) {
     const [searchData, setSearchData] = useState();
     const [selectedValue, setSelectedValue] = useState('');
     const [loader, setLoader] = useState(false);
-    const [validation, setValidation] = useState({searchItem:false,dropdown:false});
+    const [validation, setValidation] = useState({ searchItem: false, dropdown: false });
 
-    useEffect(()=>{
-        if(!selectedValue)
-        setValidation({searchItem:false,dropdown:false})
-        if(findUser&&selectedValue)
-            setValidation({searchItem:true,dropdown:true});
+    useEffect(() => {
+        if (!selectedValue)
+            setValidation({ searchItem: false, dropdown: false })
+        if (findUser && selectedValue)
+            setValidation({ searchItem: true, dropdown: true });
         console.log(validation);
-    },[findUser,selectedValue]);
+    }, [findUser, selectedValue]);
     const onSubmitHandler = async () => {
         const type = selectedValue;
         const Data = await FetchUsers(findUser, type);
@@ -59,7 +59,7 @@ function Users(props) {
                 </select>
             </div>
             <div className={styles.submitSearchButton}>
-                <button onClick={onSubmitHandler} className={(validation.searchItem&&validation.dropdown)?styles.searchButton:styles.searchButtonDisabled}>Search</button>
+                <button onClick={onSubmitHandler} className={(validation.searchItem && validation.dropdown) ? styles.searchButton : styles.searchButtonDisabled}>Search</button>
             </div>
         </div>
         <div className={styles.pageButtonDiv}>
