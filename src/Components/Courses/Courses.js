@@ -29,6 +29,7 @@ function Courses(props) {
         />
 
         <Button onClick={onSubmitHandler} text="Search" />
+        <Button onClick={""} className={styles.addnew} text="+" />
       </div>
       <Actions>
         <ActionButton name="Silver" onClick={filterTierhandler}>

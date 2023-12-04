@@ -1,38 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
-
-
-
-
-.searchInputDiv{
-    width: 85%;
-    display: flex;
+.searchInputDiv {
+  width: 85%;
+  display: flex;
 }
-.searchInput{
-    width: 100%;
-    margin: 0 1rem 0 1rem;
-    padding: 1rem 1rem 1rem 1rem;
+.searchInput {
+  width: 100%;
+  margin: 0 1rem 0 1rem;
+  padding: 1rem 1rem 1rem 1rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* //Button CSS */
 .submitbtn > button {
+  font-size: 1rem;
   font-family: "Asap", sans-serif;
   cursor: pointer;
   color: #fff;
@@ -50,11 +30,6 @@
 .submitbtn > button:hover {
   background-color: #f24353;
 }
-
-
-
-
-
 
 /* Css for spinner loading button */
 .spinner {
@@ -78,16 +53,14 @@
   color: #9fa3a9;
   cursor: not-allowed;
 }
-  
 
-@media screen and (max-width:585px){
-    .searchInput{
-        width: 80%;
-    }
+@media screen and (max-width: 585px) {
+  .searchInput {
+    width: 80%;
+  }
 }
-@media screen and (max-width:356px){
-    .searchInput{
-        width: 70%;
-    }
+@media screen and (max-width: 356px) {
+  .searchInput {
+    width: 70%;
+  }
 }
-
