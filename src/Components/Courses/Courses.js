@@ -10,6 +10,7 @@ function Courses(props) {
   const [findCourse, setFindCourse] = useState("");
   const [filterTier, setFilerTier] = useState("");
   const [search, setSearch] = useState(false);
+  const [addCourseCard, setAddCourseCard] = useState(false);
   const onSubmitHandler = (event) => {
     event.preventDefault();
     setSearch((prev) => !prev);
@@ -29,7 +30,13 @@ function Courses(props) {
         />
 
         <Button onClick={onSubmitHandler} text="Search" />
-        <Button onClick={""} className={styles.addnew} text="+" />
+        <Button
+          onClick={() => {
+            setAddCourseCard(true);
+          }}
+          className={styles.addnew}
+          text="+"
+        />
       </div>
       <Actions>
         <ActionButton name="Silver" onClick={filterTierhandler}>
