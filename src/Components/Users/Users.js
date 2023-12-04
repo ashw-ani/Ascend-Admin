@@ -4,8 +4,6 @@ import Button from '../UI/Search Bar/button';
 import { useEffect, useState } from 'react';
 import UserList from './UserList/UserList'
 import FetchUsers from '../../api/FetchUsers';
-import { ReactComponent as Loader } from "../../../src/assets/signInButton.svg";
-
 
 
 function Users(props) {
@@ -21,7 +19,6 @@ function Users(props) {
         console.log('====================================');
         console.log("here from submit handler", findUser, selectedValue);
         console.log('====================================');
-        setLoader(true);
         const Data = await FetchUsers(findUser, type);
         console.log('====================================');
         console.log("given data", Data);
@@ -49,17 +46,17 @@ function Users(props) {
     return (<div className={styles.container}>
         <div className={styles.userBody}>
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
-            <div className={styles.dropDownSubmitDiv}>
-                <div className={styles.dropdown}>
-                    <label htmlFor="myDropdown">Search By :</label>
-                    <select id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
-                        <option value="">Select an option</option>
-                        <option value="email">Email</option>
-                        <option value="phone">Phone</option>
-                        <option value="name">Name</option>
-                    </select>
-                </div>
-                <Button className={styles.onSubmitButton} onClick={onSubmitHandler} text="Search" />
+            <div className={styles.dropdown}>
+                <label htmlFor="myDropdown">Search By :</label>
+                <select required='true' id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
+                    <option value="">Select an option</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+            <div className={styles.submitSearchButton}>
+                <Button onClick={onSubmitHandler} text="Search" />
             </div>
         </div>
         <div className={styles.pageButtonDiv}>
@@ -68,7 +65,7 @@ function Users(props) {
             {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
         </div>
         <div className={styles.userList}>
-            {loader ? <div className={styles.spinnerDiv}><Loader className={styles.spinner} /></div> : <UserList searchData={searchData} setpageEndHandler={setpageEndHandler} page={page} />}
+            <UserList searchData={searchData} setpageEndHandler={setpageEndHandler} page={page} />
         </div>
     </div>);
 }

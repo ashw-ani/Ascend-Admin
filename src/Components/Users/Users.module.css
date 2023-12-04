@@ -10,7 +10,14 @@
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.208);
   z-index: 10;
-
+}
+.submitSearchButton{
+  margin-right: 2.5rem;
+}
+.submitSearchButton{
+  /* width: 50%; */
+  /* margin-right: 2rem; */
+  width: auto;
 }
 
 
