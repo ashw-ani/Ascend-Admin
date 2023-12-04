@@ -7,10 +7,12 @@ import Actions from "../UI/Actions/Actions";
 import ActionButton from "../UI/Actions/ActionButton/ActionButton";
 
 function Courses(props) {
-  const [findUser, setFindUser] = useState();
+  const [findCourse, setFindCourse] = useState("");
   const [filterTier, setFilerTier] = useState("");
+  const [search, setSearch] = useState(false);
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    setSearch((prev) => !prev);
   };
 
   const filterTierhandler = (event) => {
@@ -22,7 +24,7 @@ function Courses(props) {
     <div className={styles.container}>
       <div className={styles.userBody}>
         <SearchBar
-          setFindUser={setFindUser}
+          setFindUser={setFindCourse}
           placeholderText="Search for the course"
         />
 
@@ -46,7 +48,11 @@ function Courses(props) {
         </ActionButton>
       </Actions>
       <div className={styles.courseList}>
-        <CourseList filterTier={filterTier} />
+        <CourseList
+          search={search}
+          searchText={findCourse}
+          filterTier={filterTier}
+        />
       </div>
     </div>
   );

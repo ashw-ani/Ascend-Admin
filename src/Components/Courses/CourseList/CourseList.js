@@ -1,20 +1,37 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CourseList.module.css";
 import getCourses from "../../../api/getCourses";
+import { ReactComponent as Loader } from "../../../assets/signInButton.svg";
 
 export default function CourseList(props) {
   const [courseData, setCourseData] = useState();
+  const [loader, setLoader] = useState(false);
+
   //   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const collectCourse = async () => {
       //   console.log(props.filterTier);
-      const Data = await getCourses(`${props.filterTier}`);
+      setLoader(true);
+      const Data = await getCourses(
+        `${props.filterTier}`,
+        `${props.searchText}`
+      );
       //   console.log("incoming data", Data);
+      setLoader(false);
       setCourseData(Data);
     };
     collectCourse();
-  }, [props.filterTier]);
+  }, [props.filterTier, props.search]);
+
+  if (loader) {
+    return (
+      <div className={styles.spinnerDiv}>
+        <Loader className={styles.spinner} />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.users}>
       <table className={styles.customers} width="100%">
@@ -27,7 +44,8 @@ export default function CourseList(props) {
           </tr>
         </thead>
         <tbody>
-          {courseData?.map((item) => (
+          {courseData.noData ? <h1>No Data</h1> : ""}
+          {courseData.courses?.map((item) => (
             <tr key={item._id}>
               <td className={styles.tableColumn}>{item.course_id}</td>
               <td className={styles.tableColumn}>{item.name}</td>
