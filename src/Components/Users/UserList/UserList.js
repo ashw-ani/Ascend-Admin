@@ -84,7 +84,7 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
             </tr>
           </thead>
           <tbody>
-            {searchData === undefined ? UsersData?.map((item) => (
+            {(searchData === undefined) ? UsersData?.map((item) => (
               <tr key={item.id}>
                 <td className={styles.tableColumn}>{item.email}</td>
                 <td className={styles.tableColumn}>{item.fullName}</td>
@@ -92,13 +92,15 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
                 <td className={styles.tableColumn}>{item.joiningDate}</td>
                 <td><button onClick={() => { onEditHandler(item) }} className={styles.editButton}>Edit</button></td>
               </tr>
-            )) : (<tr key={searchData.id}>
-              <td className={styles.tableColumn}>{searchData.email}</td>
-              <td className={styles.tableColumn}>{searchData.fullName}</td>
-              <td className={styles.tableColumn}>{searchData.phone}</td>
-              <td className={styles.tableColumn}>{searchData.joiningDate}</td>
-              <td><button onClick={() => { onEditHandler(searchData) }} className={styles.editButton}>Edit</button></td>
-            </tr>)}
+            )) : searchData?.map((item) => (
+              <tr key={item.id}>
+                <td className={styles.tableColumn}>{item.email}</td>
+                <td className={styles.tableColumn}>{item.fullName}</td>
+                <td className={styles.tableColumn}>{item.phone}</td>
+                <td className={styles.tableColumn}>{item.joiningDate}</td>
+                <td><button onClick={() => { onEditHandler(item) }} className={styles.editButton}>Edit</button></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

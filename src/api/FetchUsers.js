@@ -23,9 +23,6 @@ const FetchUsers = async (findUser, type) => {
   //   .then(result => console.log(result))
   //   .catch(error => console.log('error', error));
   const data = await Users.json();
-  console.log("====================================");
-  console.log(data);
-  console.log("====================================");
   return data;
 };
 export default FetchUsers;

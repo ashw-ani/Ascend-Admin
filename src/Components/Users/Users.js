@@ -13,18 +13,21 @@ function Users(props) {
     const [searchData, setSearchData] = useState();
     const [selectedValue, setSelectedValue] = useState('');
     const [loader, setLoader] = useState(false);
+    const [validation, setValidation] = useState({searchItem:false,dropdown:false});
 
+    useEffect(()=>{
+        if(!selectedValue)
+        setValidation({searchItem:false,dropdown:false})
+        if(findUser&&selectedValue)
+            setValidation({searchItem:true,dropdown:true});
+        console.log(validation);
+    },[findUser,selectedValue]);
     const onSubmitHandler = async () => {
         const type = selectedValue;
-        console.log('====================================');
-        console.log("here from submit handler", findUser, selectedValue);
-        console.log('====================================');
         const Data = await FetchUsers(findUser, type);
-        console.log('====================================');
-        console.log("given data", Data);
-        console.log('====================================');
+        setpageEnd(true);
         setLoader(false);
-        setSearchData(Data[0]);
+        setSearchData(Data);
     }
     const nextButtonHandler = () => {
         const nextVal = page + 1;
@@ -42,7 +45,7 @@ function Users(props) {
     }
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
-    };
+    }
     return (<div className={styles.container}>
         <div className={styles.userBody}>
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
@@ -56,11 +59,11 @@ function Users(props) {
                 </select>
             </div>
             <div className={styles.submitSearchButton}>
-                <Button onClick={onSubmitHandler} text="Search" />
+                <button onClick={onSubmitHandler} className={(validation.searchItem&&validation.dropdown)?styles.searchButton:styles.searchButtonDisabled}>Search</button>
             </div>
         </div>
         <div className={styles.pageButtonDiv}>
-            <span>Page {page}</span>
+            <span>Page {page} [Max 10 entries]</span>
             <button className={styles.pageButtons} onClick={prevButtonHandler}>{'<'}</button>
             {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
         </div>
