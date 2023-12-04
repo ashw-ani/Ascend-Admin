@@ -85,9 +85,12 @@
         width: 80%;
     }
 }
-@media screen and (max-width:356px){
+@media screen and (max-width:520px){
     .searchInput{
-        width: 70%;
+        width: 100%;
+    }
+    .searchInputDiv{
+      width: 100%;
     }
 }
 

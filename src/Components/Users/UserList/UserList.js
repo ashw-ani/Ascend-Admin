@@ -11,19 +11,21 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
   const [loader, setLoader] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [profileData, setprofileData] = useState();
-  const [updateDataInProfile,setupdateDataInProfile] = useState(false);
+  const [updateDataInProfile, setupdateDataInProfile] = useState(false);
 
 
-  const profileUpdateHandler = async ()=>{
+  const profileUpdateHandler = async () => {
+    setLoader(true);
     const Data = await UpdateUser(profileData);
     console.log('====================================');
     console.log(Data);
     console.log('====================================');
     setupdateDataInProfile(!updateDataInProfile);
     setprofileData(Data);
+    setLoader(false);
   }
   useEffect(() => {
-    
+
     const collectData = async () => {
       if (searchData) {
         setUsersData(searchData);
@@ -40,18 +42,26 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
     };
     collectData();
 
-  }, [page,updateDataInProfile]);
+  }, [page]);
 
   const onEditHandler = (user) => {
-    setprofileData(user);
+    if (profileData)
+      setprofileData(profileData);
+    else
+      setprofileData(user);
     setShowCard(true);
   }
   const formChangeHandler = (event) => {
-    setprofileData((prevData)=>{
+    setprofileData((prevData) => {
       return { ...prevData, [event.target.name]: event.target.value };
     })
   }
-  
+
+  const closeButtonHandler = () =>{
+    setShowCard(false);
+    window.location.reload();
+  }
+
 
   if (loader) {
     return (
@@ -96,12 +106,12 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
         <div className={styles.userCard}>
           <div className={styles.profileHeader}>
             <h3 className={styles.profileEdit}>Profile Edit</h3>
-            <button onClick={() => setShowCard(false)} className={styles.closeButton}>X</button>
+            <button onClick={closeButtonHandler} className={styles.closeButton}>X</button>
           </div>
           <div className={styles.profileBody}>
             <div className={styles.profileBodyDiv}>
-            <div className={styles.profileDataImage}>
-                <img className={styles.profileImage} alt='Profile Pic' src={profileData.imgUrl?profileData.imgUrl:noimage}></img>
+              <div className={styles.profileDataImage}>
+                <img className={styles.profileImage} alt='Profile Pic' src={profileData.imgUrl ? profileData.imgUrl : noimage}></img>
               </div>
               <div className={styles.userDetails}>
                 <span>First Name</span>
@@ -123,7 +133,7 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
                 <span>Phone</span>
                 <input name='phone' onChange={formChangeHandler} value={profileData.phone}></input>
               </div>
-              
+
             </div>
             <div className={styles.profileBodyDiv}>
 
@@ -161,9 +171,9 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
                 <input name='niche' onChange={formChangeHandler} value={profileData.niche}></input>
               </div>
               <div className={styles.updateButtonDiv}>
-              <button onClick={profileUpdateHandler} className={styles.updateButton}>Update</button>
+                <button onClick={profileUpdateHandler} className={styles.updateButton}>Update</button>
               </div>
-              
+
             </div>
           </div>
         </div>
