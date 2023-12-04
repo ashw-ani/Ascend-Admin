@@ -46,14 +46,16 @@ function Users(props) {
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
             <div className={styles.dropdown}>
                 <label htmlFor="myDropdown">Search By :</label>
-                <select id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
+                <select required='true' id="myDropdown" value={selectedValue} onChange={handleSelectChange}>
                     <option value="">Select an option</option>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                     <option value="name">Name</option>
                 </select>
             </div>
+            <div  className={styles.submitSearchButton}>
             <Button onClick={onSubmitHandler} text="Search" />
+            </div>
         </div>
         <div className={styles.pageButtonDiv}>
             <span>Page {page}</span>
