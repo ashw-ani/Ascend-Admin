@@ -68,7 +68,7 @@ function Users(props) {
             {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
         </div>
         <div className={styles.userList}>
-            <UserList searchData={searchData} setpageEndHandler={setpageEndHandler} page={page} />
+            <UserList searchData={searchData} setSearchData={setSearchData} setpageEndHandler={setpageEndHandler} page={page} />
         </div>
     </div>);
 }
