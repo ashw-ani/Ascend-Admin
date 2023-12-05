@@ -16,6 +16,15 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
 
   const profileUpdateHandler = async () => {
     setLoader(true);
+    if (profileData.firstName && profileData.lastName)
+      profileData.fullName = profileData.firstName + " " +  profileData.lastName;
+    else if (profileData.firstName)
+      profileData.fullName = profileData.firstName;
+    else if (profileData.lastName)
+      profileData.fullName = profileData.lastName;
+    else
+      profileData.fullName = "";
+
     const Data = await UpdateUser(profileData);
     console.log('====================================');
     console.log(Data);
@@ -45,10 +54,7 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
   }, [page]);
 
   const onEditHandler = (user) => {
-    if (profileData)
-      setprofileData(profileData);
-    else
-      setprofileData(user);
+    setprofileData(user);
     setShowCard(true);
   }
   const formChangeHandler = (event) => {
@@ -57,7 +63,7 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
     })
   }
 
-  const closeButtonHandler = () =>{
+  const closeButtonHandler = () => {
     setShowCard(false);
     window.location.reload();
   }
@@ -125,7 +131,7 @@ export default function UserList({ searchData, setpageEndHandler, page }) {
               </div>
               <div className={styles.userDetails}>
                 <span>Full Name</span>
-                <input name='fullName' onChange={formChangeHandler} value={profileData.fullName}></input>
+                <input disabled='true' name='fullName' onChange={formChangeHandler} value={profileData.fullName}></input>
               </div>
               <div className={styles.userDetails}>
                 <span>Email</span>
