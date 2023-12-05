@@ -1,28 +1,12 @@
-const CreateUser = async () => {
+const CreateUser = async (cardData) => {
     var myHeaders = new Headers();
     myHeaders.append("api-key", "123456");
     myHeaders.append("Content-Type", "application/json");
-    const joiningDate = Date.now("<YYYY-mm-ddTHH:MM:ssZ>");
-    // const endDta = new Date('August 19, 1975 23:15:30');
-    const user = {
-        firstName:'happu',
-        lastName:'dicosta',
-        fullName:'happu dicosta',
-        email:'happu@ghuskhor.com',
-        phone:'998982112',
-        achievementLevel:'high',
-        teamName:'avengers',
-        tier:'star',
-        imgUrl:'fjdksajfklasjf',
-        joiningDate:joiningDate,
-        city:'noida',
-        niche:'maid'
-    }
     var raw = JSON.stringify({
-      user:user
+      ...cardData
     });
 
-    console.log(user);
+    console.log(cardData);
   
     var requestOptions = {
       method: "POST",

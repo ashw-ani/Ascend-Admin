@@ -29,8 +29,9 @@ export default function NewUserCard(props) {
         window.location.reload();
     }
     const profileAddHandler = async ()=>{
-       const data = await CreateUser();
-       console.log("hello from newCard",data);
+      cardData.fullName = cardData.firstName + " " + cardData.lastName;
+       await CreateUser(cardData);
+       window.location.reload();
     }
   return (
     <div className={styles.cardWrapper}>

@@ -35,6 +35,7 @@ export default function ProfileCard({
   };
   const deleteUserHandler = ()=>{
      deleteUser(profileData._id);
+     window.location.reload();
   }
 
   const closeButtonHandler = async () => {
