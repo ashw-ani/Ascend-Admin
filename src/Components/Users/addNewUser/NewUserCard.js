@@ -1,66 +1,53 @@
-import styles from "./ProfileCard.module.css";
-import UpdateUser from "../../../api/UpdateUser";
-import noimage from "../../../assets/no-image.svg";
-import deleteUser from "../../../api/deleteUser";
+import { useState } from 'react';
+import styles from './NewUserCard.module.css'
+import noimage from '../../../assets/no-image.svg'
+import CreateUser from '../../../api/createUser';
 
-export default function ProfileCard({
-  updateDataInProfile,
-  setupdateDataInProfile,
-  profileData,
-  setprofileData,
-  setLoader,
-  setShowCard,
-}) {
-  const profileUpdateHandler = async () => {
-    setLoader(true);
-    if (profileData.firstName && profileData.lastName)
-      profileData.fullName = profileData.firstName + " " + profileData.lastName;
-    else if (profileData.firstName)
-      profileData.fullName = profileData.firstName;
-    else if (profileData.lastName) profileData.fullName = profileData.lastName;
-    else profileData.fullName = "";
-
-    const Data = await UpdateUser(profileData);
-    console.log("====================================");
-    console.log(Data);
-    console.log("====================================");
-    setupdateDataInProfile(!updateDataInProfile);
-    setprofileData(Data);
-    setLoader(false);
-  };
-  const formChangeHandler = (event) => {
-    setprofileData((prevData) => {
-      return { ...prevData, [event.target.name]: event.target.value };
+export default function NewUserCard(props) {
+    const [cardData,setCardData] = useState({
+        firstName:'',
+        lastName:'',
+        fullName:'',
+        email:'',
+        phone:'',
+        achievementLevel:'',
+        teamName:'',
+        tier:'',
+        imgUrl:'',
+        joiningDate:'',
+        endDate:'',
+        city:'',
+        niche:''
     });
-  };
-  const deleteUserHandler = ()=>{
-     deleteUser(profileData._id);
-  }
-
-  const closeButtonHandler = async () => {
-    setShowCard(false);
-    setupdateDataInProfile(!updateDataInProfile);
-    window.location.reload();
-  };
+    const formChangeHandler = (event) =>{
+        setCardData((prevData)=>{
+            return {...prevData, [event.target.name]:event.target.value};
+        })
+        console.log(cardData);
+    }
+    const closeButtonHandler = ()=>{
+        window.location.reload();
+    }
+    const profileAddHandler = async ()=>{
+       const data = await CreateUser();
+       console.log("hello from newCard",data);
+    }
   return (
-    <div className={styles.profileWrapper}>
-      <div className={styles.userCard}>
-        <div className={styles.profileHeader}>
-          <div className={styles.headers}>
-            <h3 className={styles.profileEdit}>Profile Edit</h3>
-            <button onClick={deleteUserHandler} className={styles.deleteButton}>Delete User</button>
-          </div>
+    <div className={styles.cardWrapper}>
+      <div className={styles.Card}>
+        <div className={styles.Header}>
+          <h3 className={styles.cardEdit}>{props.title}</h3>
           <button onClick={closeButtonHandler} className={styles.closeButton}>
             X
           </button>
         </div>
-        <div className={styles.profileBody}>
-          <div className={styles.profileBodyDiv}>
-            <div className={styles.profileDataImage}>
+        <div className={styles.cardBody}>
+          <div className={styles.cardBodyDiv}>
+            <div className={styles.cardDataImage}>
               <img
-                className={styles.profileImage}
+                className={styles.cardImage}
                 alt="Profile Pic"
-                src={profileData.imgUrl ? profileData.imgUrl : noimage}
+                src={cardData.imgUrl ? cardData.imgUrl : noimage}
               ></img>
             </div>
             <div className={styles.userDetails}>
@@ -68,7 +55,7 @@ export default function ProfileCard({
               <input
                 name="firstName"
                 onChange={formChangeHandler}
-                value={profileData.firstName}
+                value={cardData.firstName}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -76,7 +63,7 @@ export default function ProfileCard({
               <input
                 name="lastName"
                 onChange={formChangeHandler}
-                value={profileData.lastName}
+                value={cardData.lastName}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -85,7 +72,7 @@ export default function ProfileCard({
                 disabled="true"
                 name="fullName"
                 onChange={formChangeHandler}
-                value={profileData.fullName}
+                value={cardData.fullName}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -93,7 +80,7 @@ export default function ProfileCard({
               <input
                 name="email"
                 onChange={formChangeHandler}
-                value={profileData.email}
+                value={cardData.email}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -101,7 +88,7 @@ export default function ProfileCard({
               <input
                 name="phone"
                 onChange={formChangeHandler}
-                value={profileData.phone}
+                value={cardData.phone}
               ></input>
             </div>
           </div>
@@ -111,7 +98,7 @@ export default function ProfileCard({
               <input
                 name="achievementLevel"
                 onChange={formChangeHandler}
-                value={profileData.achievementLevel}
+                value={cardData.achievementLevel}
               ></input>
             </div>
 
@@ -120,7 +107,7 @@ export default function ProfileCard({
               <input
                 name="teamName"
                 onChange={formChangeHandler}
-                value={profileData.teamName}
+                value={cardData.teamName}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -128,7 +115,7 @@ export default function ProfileCard({
               <input
                 name="tier"
                 onChange={formChangeHandler}
-                value={profileData.tier}
+                value={cardData.tier}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -136,7 +123,7 @@ export default function ProfileCard({
               <input
                 name="imgUrl"
                 onChange={formChangeHandler}
-                value={profileData.imgUrl}
+                value={cardData.imgUrl}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -144,7 +131,7 @@ export default function ProfileCard({
               <input
                 name="joiningDate"
                 onChange={formChangeHandler}
-                value={profileData.joiningDate}
+                value={cardData.joiningDate}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -152,7 +139,7 @@ export default function ProfileCard({
               <input
                 name="endDate"
                 onChange={formChangeHandler}
-                value={profileData.endDate}
+                value={cardData.endDate}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -160,7 +147,7 @@ export default function ProfileCard({
               <input
                 name="city"
                 onChange={formChangeHandler}
-                value={profileData.city}
+                value={cardData.city}
               ></input>
             </div>
             <div className={styles.userDetails}>
@@ -168,15 +155,15 @@ export default function ProfileCard({
               <input
                 name="niche"
                 onChange={formChangeHandler}
-                value={profileData.niche}
+                value={cardData.niche}
               ></input>
             </div>
-            <div className={styles.updateButtonDiv}>
+            <div className={styles.AddButtonDiv}>
               <button
-                onClick={profileUpdateHandler}
-                className={styles.updateButton}
+                onClick={profileAddHandler}
+                className={styles.AddButton}
               >
-                Update
+                Add
               </button>
             </div>
           </div>

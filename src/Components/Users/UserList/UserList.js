@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import styles from './UserList.module.css'
-import GetUsers from '../../../api/getUsers';
+import React, { useEffect, useState } from "react";
+import styles from "./UserList.module.css";
+import GetUsers from "../../../api/getUsers";
 import { ReactComponent as Loader } from "../../../assets/signInButton.svg";
-import ProfileCard from '../profileCard/ProfileCard';
+import ProfileCard from "../profileCard/ProfileCard";
 
-
-export default function UserList({ searchData,setpageEndHandler, page }) {
+export default function UserList({
+  findUser,
+  searchData,
+  setSearchData,
+  setpageEndHandler,
+  page,
+}) {
   const [UsersData, setUsersData] = useState();
   const [loader, setLoader] = useState(false);
   const [showCard, setShowCard] = useState(false);
@@ -13,12 +18,10 @@ export default function UserList({ searchData,setpageEndHandler, page }) {
   const [updateDataInProfile, setupdateDataInProfile] = useState(false);
 
   useEffect(() => {
-
     const collectData = async () => {
       if (searchData) {
         setUsersData(searchData);
-      }
-      else {
+      } else {
         setLoader(true);
         const Data = await GetUsers(page);
         setUsersData(Data.contacts);
@@ -29,14 +32,12 @@ export default function UserList({ searchData,setpageEndHandler, page }) {
       setLoader(false);
     };
     collectData();
+  }, [page]);
 
-  }, [page,updateDataInProfile]);
-
-  const onEditHandler = (user) => {
+  const onEditHandler = async (user) => {
     setprofileData(user);
     setShowCard(true);
-  }
-
+  };
 
   if (loader) {
     return (
@@ -59,27 +60,58 @@ export default function UserList({ searchData,setpageEndHandler, page }) {
             </tr>
           </thead>
           <tbody>
-            {(searchData === undefined) ? UsersData?.map((item) => (
-              <tr key={item.id}>
-                <td className={styles.tableColumn}>{item.email}</td>
-                <td className={styles.tableColumn}>{item.fullName}</td>
-                <td className={styles.tableColumn}>{item.phone}</td>
-                <td className={styles.tableColumn}>{item.joiningDate}</td>
-                <td><button onClick={() => { onEditHandler(item) }} className={styles.editButton}>Edit</button></td>
-              </tr>
-            )) : searchData?.map((item) => (
-              <tr key={item.id}>
-                <td className={styles.tableColumn}>{item.email}</td>
-                <td className={styles.tableColumn}>{item.fullName}</td>
-                <td className={styles.tableColumn}>{item.phone}</td>
-                <td className={styles.tableColumn}>{item.joiningDate}</td>
-                <td><button onClick={() => { onEditHandler(item) }} className={styles.editButton}>Edit</button></td>
-              </tr>
-            ))}
+            {searchData === undefined
+              ? UsersData?.map((item) => (
+                <tr key={item.id}>
+                  <td className={styles.tableColumn}>{item.email}</td>
+                  <td className={styles.tableColumn}>{item.fullName}</td>
+                  <td className={styles.tableColumn}>{item.phone}</td>
+                  <td className={styles.tableColumn}>{item.joiningDate}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        onEditHandler(item);
+                      }}
+                      className={styles.editButton}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))
+              : searchData?.map((item) => (
+                <tr key={item.id}>
+                  <td className={styles.tableColumn}>{item.email}</td>
+                  <td className={styles.tableColumn}>{item.fullName}</td>
+                  <td className={styles.tableColumn}>{item.phone}</td>
+                  <td className={styles.tableColumn}>{item.joiningDate}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        onEditHandler(item);
+                      }}
+                      className={styles.editButton}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
-      {showCard && <ProfileCard updateDataInProfile={updateDataInProfile} setupdateDataInProfile={setupdateDataInProfile} profileData={profileData} setprofileData={setprofileData} setLoader={setLoader} setShowCard={setShowCard} />}
+      {showCard && (
+        <ProfileCard
+          findUser={findUser}
+          setSearchData={setSearchData}
+          updateDataInProfile={updateDataInProfile}
+          setupdateDataInProfile={setupdateDataInProfile}
+          profileData={profileData}
+          setprofileData={setprofileData}
+          setLoader={setLoader}
+          setShowCard={setShowCard}
+        />
+      )}
     </>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 /* ProfileCard */
 
 
-.profileWrapper {
+.cardWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
     background-color: rgba(0, 0, 0, 0.185);
   }
   
-  .userCard {
+  .Card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
     background-color: white;
     border-radius: 10px;
   }
-  .profileHeader{
+  .Header{
     width: 100%;
     height: 10%;
     border-bottom: 1px solid #161A37;
@@ -35,24 +35,8 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  .headers{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 50%;
-  }
-  .deleteButton{
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    margin-left:1rem;
-    border-radius: 4px;
-  }
-  .deleteButton:hover{
-    background-color: black;
-    cursor: pointer;
+  .cardEdit{
+    margin-left: 2%;
   }
   .closeButton{
     right: 0;
@@ -62,21 +46,18 @@
     border-radius: 2px;
     margin-right: 1%;
   }
-  .profileEdit{
-    margin-left: 2%;
-  }
   .closeButton:hover{
     background-color: #f24353;
     cursor: pointer;
   }
-  .profileBody{
+  .cardBody{
     display: flex;
     height: 100%;
     flex-direction: row;
     justify-content: center;
     align-items:center;
   }
-  .profileBodyDiv{
+  .cardBodyDiv{
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -85,12 +66,12 @@
     margin-top: 8rem;
     /* top:0 */
   }
-  .profileDataImage{
+  .cardDataImage{
     width: 40%;
     height: 30%;
     margin-top: 7%;
   }
-  .profileImage{
+  .cardImage{
     width: 5rem;
     height: 5rem;
     margin-bottom: 0.5rem;
@@ -117,13 +98,18 @@
       left: 0;
     }
   }
-  .updateButtonDiv{
-    width: 90%;
+  .AddButtonDiv{
+    width: 95%;
     height: 100%;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .updateButton{
+  .AddButton{
     width: 100%;
+    margin-left: 1rem;
     margin-top: 1rem;
     display: flex;
     align-items: center;
@@ -136,28 +122,28 @@
     border-radius: 2px;
   }
   
-  .updateButton:hover{
+  .AddButton:hover{
     cursor: pointer;
     background-color: #f24353;
   }
   
   @media screen and (max-width:880px) {
-    .profileWrapper{
+    .cardWrapper{
       display: flex;
       flex-wrap: wrap;
     }
-    .profileBody{
+    .cardBody{
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-    .profileBodyDiv{
+    .cardBodyDiv{
       margin-top: 0;
       justify-content: center;
       align-items: center;
     }
-    .profileWrapper{
+    .cardWrapper{
       height: auto;
     }
     .userCard {
@@ -171,11 +157,11 @@
     .userDetails>span{
       margin-left: 0;
     }
-    .updateButtonDiv{
+    .AddButtonDiv{
       display: flex;
       justify-content: end;
     }
-    .updateButton{
+    .AddButton{
       margin-bottom: 2rem;
       width: 40%;
     }

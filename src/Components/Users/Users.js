@@ -4,11 +4,13 @@ import Button from '../UI/Search Bar/button';
 import { useEffect, useState } from 'react';
 import UserList from './UserList/UserList'
 import FetchUsers from '../../api/FetchUsers';
+import NewUserCard from '../Users/addNewUser/NewUserCard'
 
 
 function Users(props) {
     const [findUser, setFindUser] = useState();
     const [page, setPage] = useState(1);
+    const [editCard,setEditCard] = useState(false);
     const [pageEnd, setpageEnd] = useState(false);
     const [searchData, setSearchData] = useState();
     const [selectedValue, setSelectedValue] = useState('');
@@ -29,6 +31,9 @@ function Users(props) {
         setLoader(false);
         setSearchData(Data);
     }
+    const newUserHandler = () =>{
+        setEditCard(true);
+    }
     const nextButtonHandler = () => {
         const nextVal = page + 1;
         setPage(nextVal);
@@ -46,8 +51,14 @@ function Users(props) {
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
     }
+
+
     return (<div className={styles.container}>
+        {editCard&&<div className={styles.card}>
+            <NewUserCard title='New User' />
+        </div>}
         <div className={styles.userBody}>
+
             <SearchBar setFindUser={setFindUser} placeholderText="Search for the user" />
             <div className={styles.dropdown}>
                 <label htmlFor="myDropdown">Search By :</label>
@@ -63,12 +74,17 @@ function Users(props) {
             </div>
         </div>
         <div className={styles.pageButtonDiv}>
-            <span>Page {page} [Max 10 entries]</span>
-            <button className={styles.pageButtons} onClick={prevButtonHandler}>{'<'}</button>
-            {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
+            <div className={styles.addUsersButtonDiv}>
+                <button onClick={newUserHandler} className={styles.addUsersButton}>Add</button>
+            </div>
+            <div className={styles.buttons}>
+                <span>Page {page} [Max 10 entries]</span>
+                <button className={styles.pageButtons} onClick={prevButtonHandler}>{'<'}</button>
+                {!pageEnd ? <button className={styles.pageButtons} onClick={nextButtonHandler}>{'>'}</button> : <button disabled className={styles.pageButtonsDisabled} >{'>'}</button>}
+            </div>
         </div>
         <div className={styles.userList}>
-            <UserList searchData={searchData} setSearchData={setSearchData} setpageEndHandler={setpageEndHandler} page={page} />
+            <UserList findUser={findUser} searchData={searchData} setSearchData={setSearchData} setpageEndHandler={setpageEndHandler} page={page} />
         </div>
     </div>);
 }
