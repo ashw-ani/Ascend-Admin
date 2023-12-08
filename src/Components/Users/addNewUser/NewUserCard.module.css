@@ -176,3 +176,85 @@
       margin-right: 2rem;
     }
   }
+/* deleteCard */
+.deleteCardWrapper{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.deleteCard{
+  padding: 1rem 1rem 1rem 1rem;
+}
+.deleteButtons{
+  display: flex;
+  width:auto;
+}
+.deleteButtonGrey{
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: white;
+  background-color: darkgrey;
+  border: none;
+}
+.deleteButtonRed{
+  background-color: #ff0015;
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: none;
+  color: white;
+}
+.deleteButtonRed:hover{
+  cursor: pointer;
+  background-color: #161A37;
+}
+.deleteButtonGrey:hover{
+  cursor: pointer;
+  background-color: #777777;
+}
+  /* Course Tile */
+
+  .courseForm{
+    height: 100%;
+  }
+.courseDiv{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .courseAdd{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+.courseParameter{
+  display: flex;
+  height: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 1rem 1rem 1rem;
+}
+.courseParameterElement{
+  margin-right: 1rem;
+}
+.addButton{
+  position: absolute;
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: #f45b69;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  bottom: 2rem;
+  right: 2rem;
+}
+.addButton:hover{
+  cursor: pointer;
+  background-color: #f24353;
+}

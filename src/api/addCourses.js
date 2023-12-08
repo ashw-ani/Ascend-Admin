@@ -1,4 +1,4 @@
-const CreateUser = async (cardData) => {
+const AddCourse = async (cardData) => {
   var myHeaders = new Headers();
   myHeaders.append("api-key", "123456");
   myHeaders.append("Content-Type", "application/json");
@@ -16,14 +16,14 @@ const CreateUser = async (cardData) => {
   };
 
   const Users = await fetch(
-    "https://ascend-server.onrender.com/api/admin/contacts/addContact",
+    "https://ascend-server.onrender.com/api/admin/course/add",
     requestOptions
   );
   //   .then(response => response.text())
   //   .then(result => console.log(result))
   //   .catch(error => console.log('error', error));
   const data = await Users.json();
-  console.log("hello from createUser", data);
+  console.log("hello from AddCourses", data);
   return data;
 };
-export default CreateUser;
+export default AddCourse;
