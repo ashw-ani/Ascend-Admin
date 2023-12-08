@@ -58,14 +58,12 @@ export default function NewUserCard(props) {
   };
 
   return (
-    <div
-      className={
-        props.type === "deleteCard"
-          ? styles.cardWrapper
-          : styles.deleteCardWrapper
-      }
-    >
-      <div className={styles.Card}>
+    <div className={styles.cardWrapper}>
+      <div
+        className={
+          props.type === "deleteCard" ? styles.cardDeleteDiv : styles.Card
+        }
+      >
         <div className={styles.Header}>
           <h3 className={styles.cardEdit}>{props.title}</h3>
           <button onClick={closeButtonHandler} className={styles.closeButton}>
