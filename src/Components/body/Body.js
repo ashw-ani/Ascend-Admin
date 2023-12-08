@@ -32,7 +32,7 @@ const Body = (props) => {
           <Header>Dashboard</Header>
         </Route>
         <Route path="/users" exact>
-          <Header>User</Header>
+          <Header>Users</Header>
           <Users />
         </Route>
         <Route path="/courses" exact>

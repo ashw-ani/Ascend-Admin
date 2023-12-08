@@ -11,6 +11,19 @@
   background-color: rgba(0, 0, 0, 0.208);
   z-index: 10;
 }
+.card{
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.208);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .submitSearchButton{
   margin-right: 2.5rem;
 }
@@ -78,7 +91,17 @@
   margin-left: 1rem;
 
 }
-
+.addUsersButton{
+  background-color: #f45b69;
+  color: white;
+  border: none;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  margin-right: 1rem;
+}
+.addUsersButton:hover{
+  cursor: pointer;
+  background-color: #f24353;
+}
 .pageButtons:hover{
   cursor: pointer;
   background-color: #f24353;
