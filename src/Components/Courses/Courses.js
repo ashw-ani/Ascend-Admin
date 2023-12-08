@@ -5,6 +5,7 @@ import Button from "../UI/Search Bar/button";
 import { useEffect, useState } from "react";
 import Actions from "../UI/Actions/Actions";
 import ActionButton from "../UI/Actions/ActionButton/ActionButton";
+import Modal from "../UI/modal/Modal";
 
 function Courses(props) {
   const [findCourse, setFindCourse] = useState("");
@@ -32,12 +33,19 @@ function Courses(props) {
         <Button onClick={onSubmitHandler} text="Search" />
         <Button
           onClick={() => {
-            setAddCourseCard(true);
+            setAddCourseCard((prev) => !prev);
           }}
           className={styles.addnew}
           text="+"
         />
       </div>
+      {addCourseCard && (
+        <Modal
+          onClick={() => {
+            setAddCourseCard((prev) => !prev);
+          }}
+        />
+      )}
       <Actions>
         <ActionButton name="Silver" onClick={filterTierhandler}>
           Silver
