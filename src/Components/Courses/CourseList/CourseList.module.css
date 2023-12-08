@@ -34,6 +34,21 @@ table {
   background-color: #161a37;
   color: white;
 }
+.deleteCourse{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deleteButton{
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color:white;
+  background-color: #f45b69;
+  border: none;
+}
+.deleteButton:hover{
+  cursor: pointer;
+  background-color: #f24353;
+}
 /* Css for spinner loading button */
 .spinnerDiv {
   width: 100vw;
