@@ -84,7 +84,7 @@ const Sidepanel = (props) => {
             onClickDashboard();
             withoutMenuItemsHandler(event);
           }}
-          name={"dashboard"}
+          name={""}
         >
           <MdDashboard className={styles.sidepanelicons} />
           Dashboard
