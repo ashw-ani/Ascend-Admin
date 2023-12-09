@@ -29,10 +29,14 @@ const Body = (props) => {
         ></div>
       )}
       <Switch>
-        <Route path="/dashboard" exact>
+        <Route path="/" exact>
           <Header>Dashboard</Header>
           <Dashboard />
         </Route>
+        {/* <Route path="/dashboard" exact>
+          <Header>Dashboard</Header>
+          <Dashboard />
+        </Route> */}
         <Route path="/users" exact>
           <Header>Users</Header>
           <Users />
