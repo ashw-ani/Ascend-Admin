@@ -1,0 +1,170 @@
+.DashboardBody{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.leftDiv{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.rightDiv{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+}
+.box1{
+    background-color: white;
+    flex:1;
+    margin: 1rem 1rem 1rem 1rem;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+.teamsWrapper{
+  padding: 1rem 1rem 1rem 1rem;
+}
+.teams{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #171a35;
+  margin: 1rem 1rem 1rem 1rem;
+  border-radius: 7px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.team{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.2rem 0rem 0.2rem 0rem;
+}
+.teamLogo{
+  width: 5%;
+  height: 5%;
+}
+.box2{
+    background-color: #fe684d;
+    flex:1;
+    margin: 1rem 1rem 1rem 1rem;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+.box2Body{
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.numberOfCoursesPerTier{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1rem 1rem;
+  width: auto;
+  border: 1px solid #171a35;
+  border-radius: 7px;
+}
+.box2BodyHeading{
+  display: flex;
+  font-weight: bold;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+.tierCourse{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box3{
+    background-color: #171a35;
+    flex:1;
+    margin:1rem 1rem 1rem 1rem;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+.box3 > .headings{
+    color: white;
+    border-bottom: 1px solid white;
+}
+.headings{
+    color: #171a35;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding: 1rem 0rem 0.5rem 1rem;
+}
+
+
+/* Css for spinner loading button */
+.spinnerDiv {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000000000;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.208);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .spinner {
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 10%;
+    height: 10%;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .noOfUsersPerTierDiv{
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  .noOfUsersPerTeamHeading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 2rem;
+    font-weight: bold;
+    padding-right: 2rem;
+  }
+  .noOfUsersPerTier {
+    border: 1px solid white;
+    margin: 0rem 1rem 0.5rem 1rem;
+    border-radius: 7px;
+    padding: 2rem 1rem 2rem 1rem;
+  }
+  .noOfUsersPerTeamHeading{
+    margin:1rem 1rem 1rem 1rem;
+  }
+  .userPerTier{
+    display: flex;
+    justify-content: space-between;
+  }
+  .noOfUsersPerTeam{
+    border: 1px solid white;
+    margin: 0rem 1rem 0.5rem 1rem;
+    border-radius: 7px;
+    padding: 2rem 1rem 2rem 1rem;
+  }
+  .usersPerTeam{
+    display: flex;
+    justify-content: space-between;
+  }

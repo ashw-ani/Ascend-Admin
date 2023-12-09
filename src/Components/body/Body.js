@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 
 import { useMyContext } from "../../Context/PanelContext";
 import Users from "../Users/Users";
+import Dashboard from "../Dashboard/Dashboard";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -30,6 +31,7 @@ const Body = (props) => {
       <Switch>
         <Route path="/dashboard" exact>
           <Header>Dashboard</Header>
+          <Dashboard />
         </Route>
         <Route path="/users" exact>
           <Header>Users</Header>
