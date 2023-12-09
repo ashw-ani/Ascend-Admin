@@ -28,6 +28,7 @@ function Users(props) {
   const onSubmitHandler = async () => {
     const type = selectedValue;
     const Data = await FetchUsers(findUser, type);
+    console.log(Data);
     setpageEnd(true);
     setLoader(false);
     setSearchData(Data);
@@ -77,6 +78,7 @@ function Users(props) {
             <option value="email">Email</option>
             <option value="phone">Phone</option>
             <option value="name">Name</option>
+            <option value="team">Team Name</option>
           </select>
         </div>
         <div className={styles.submitSearchButton}>
