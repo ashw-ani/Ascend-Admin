@@ -14,6 +14,7 @@ function Users(props) {
   const [searchData, setSearchData] = useState();
   const [selectedValue, setSelectedValue] = useState("");
   const [loader, setLoader] = useState(false);
+  const [selectPage,setSelectPage] = useState();
   const [validation, setValidation] = useState({
     searchItem: false,
     dropdown: false,
@@ -24,10 +25,10 @@ function Users(props) {
     if (findUser && selectedValue)
       setValidation({ searchItem: true, dropdown: true });
     console.log(validation);
-  }, [findUser, selectedValue]);
+  }, [findUser, selectedValue,selectPage]);
   const onSubmitHandler = async () => {
     const type = selectedValue;
-    const Data = await FetchUsers(findUser, type);
+    const Data = await FetchUsers(findUser, type,selectPage);
     console.log(Data);
     setpageEnd(true);
     setLoader(false);
@@ -53,7 +54,10 @@ function Users(props) {
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
   };
-
+  const handleSelectPageChange = (event) =>{
+    setSelectPage(event.target.value);
+    console.log(selectPage);
+  }
   return (
     <div className={styles.container}>
       {editCard && (
@@ -96,6 +100,16 @@ function Users(props) {
       </div>
       <div className={styles.pageButtonDiv}>
         <div className={styles.addUsersButtonDiv}>
+          <div className="dropdown">
+            {/* Dropdown select */}
+            <select value={selectPage} onChange={handleSelectPageChange}>
+              <option value="">Select an option</option>
+              <option value="10">10 Entries</option>
+              <option value="25">25 Entries</option>
+              <option value="50">50 Entries</option>
+              <option value="100">100 Entries</option>
+            </select>
+          </div>
           <button onClick={newUserHandler} className={styles.addUsersButton}>
             Add
           </button>
@@ -123,6 +137,7 @@ function Users(props) {
           setSearchData={setSearchData}
           setpageEndHandler={setpageEndHandler}
           page={page}
+          limit={selectPage}
         />
       </div>
     </div>

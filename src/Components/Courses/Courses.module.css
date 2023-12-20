@@ -6,8 +6,6 @@
   /* padding-bottom: 1rem; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 0.5rem;
 }
 .userBody {
@@ -16,7 +14,6 @@
   flex-direction: row;
   justify-content: stretch;
   align-items: center;
-  height: 10%;
   gap: 1rem;
 }
 
@@ -27,6 +24,14 @@
   margin: 0rem 0rem 0rem 0rem;
   background-color: white;
   /* padding-bottom: 10rem; */
+}
+.courseButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.button{
+  margin-right: 0.5rem;
 }
 
 /* //Button CSS */
@@ -73,4 +78,25 @@
   background: #e7e8e9;
   color: #9fa3a9;
   cursor: not-allowed;
+}
+
+/* for mobile and tablet */
+@media screen and (max-width:500px) {
+  .userBody{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .courseButtons{
+    width: 100%;
+    margin-bottom:1rem ;
+  }
+  .searchBar{
+    width: 100%;
+  }
+  .button{
+    width: 100%;
+    margin-right: 0.3rem;
+  }
+
 }

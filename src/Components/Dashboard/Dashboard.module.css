@@ -168,3 +168,21 @@
     display: flex;
     justify-content: space-between;
   }
+
+
+  /* for mobile */
+  @media screen and (max-width:610px) {
+    .DashboardBody{
+      display: flex;
+      flex-direction: column;
+    }
+    .leftDiv{
+      height: auto;
+      width: 100%;
+    }
+    .rightDiv{
+      /* margin-top: 5rem; */
+      height: auto;
+      width: 100%;
+    }
+  }

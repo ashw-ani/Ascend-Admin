@@ -10,6 +10,7 @@ export default function UserList({
   setSearchData,
   setpageEndHandler,
   page,
+  limit
 }) {
   const [UsersData, setUsersData] = useState();
   const [loader, setLoader] = useState(false);
@@ -23,7 +24,7 @@ export default function UserList({
         setUsersData(searchData);
       } else {
         setLoader(true);
-        const Data = await GetUsers(page);
+        const Data = await GetUsers(page,limit);
         setUsersData(Data.contacts);
         if (Data?.dataEnd) {
           setpageEndHandler();
@@ -32,7 +33,7 @@ export default function UserList({
       setLoader(false);
     };
     collectData();
-  }, [page]);
+  }, [page,limit]);
 
   const onEditHandler = async (user) => {
     setprofileData(user);

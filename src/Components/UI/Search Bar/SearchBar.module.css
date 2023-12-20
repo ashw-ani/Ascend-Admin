@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
 .searchInputDiv {
-  width: 85%;
+  width: 100%;
   display: flex;
 }
 .searchInput {
   width: 100%;
-  margin: 0 1rem 0 1rem;
   padding: 1rem 1rem 1rem 1rem;
 }
 
@@ -56,11 +55,11 @@
 
 @media screen and (max-width: 585px) {
   .searchInput {
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 356px) {
   .searchInput {
-    width: 70%;
+    width: 100%;
   }
 }
