@@ -178,6 +178,7 @@
     .profileBodyDiv{
       margin-left: 0;
       width: 100%;
+      height: auto;
     }
     .cardBody{
       display: flex;
@@ -185,10 +186,13 @@
       justify-content: center;
     }
     .cardWrapper{
-      margin-top: 5rem;
-      height:auto;
+      height:100%;
       display: flex;
       flex-wrap: wrap;
+    }
+    .Card{
+      margin-top: 4rem;
+      height: 100%;
     }
     .userDetails{
       display: flex;
@@ -196,22 +200,12 @@
       justify-content: space-between;
     }
     .AddButtonDiv{
+      height: auto;
       margin-left: 0;
       margin-bottom: 1rem;
     }
   }
   
-  @media screen and (max-width:380px) {
-    .userDetails{
-      width: 70%;
-    }
-    .Card{
-      font-size: 0.6rem;
-    }
-    .updateButton{
-      margin-right: 2rem;
-    }
-  }
 /* deleteCard */
 .cardDeleteDiv{
   
