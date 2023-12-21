@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { useMyContext } from "../../Context/PanelContext";
 import { FaUsers } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { PiMicrosoftTeamsLogo } from "react-icons/pi";
 
 const Sidepanel = (props) => {
   const [sideItemsWithMenu, setsideItemsWithMenu] = useState({});
@@ -87,6 +88,17 @@ const Sidepanel = (props) => {
         >
           <SiBookstack className={styles.sidepanelicons} name={"courses"} />
           Courses
+        </SidepanelItem>
+
+        <SidepanelItem
+          class={sideItemsWithoutMenu.Teams ? "active" : "inactive"}
+          onclick={(event) => {
+            withoutMenuItemsHandler(event);
+          }}
+          name={"Teams"}
+        >
+          <PiMicrosoftTeamsLogo className={styles.sidepanelicons} name={"Teams"} />
+          Teams
         </SidepanelItem>
 
         <SidepanelItem

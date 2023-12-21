@@ -3,8 +3,8 @@ import styles from "./CourseList.module.css";
 import getCourses from "../../../api/getCourses";
 import { ReactComponent as Loader } from "../../../assets/signInButton.svg";
 import NewUserCard from "../../Users/addNewUser/NewUserCard";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function CourseList(props) {
   const [courseData, setCourseData] = useState({
