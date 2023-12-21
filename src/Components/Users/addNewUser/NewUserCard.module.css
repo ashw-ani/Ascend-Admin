@@ -51,7 +51,6 @@
   }
   .cardBody{
     display: flex;
-    height: 100%;
     flex-direction: row;
     justify-content: center;
     align-items:center;
@@ -178,7 +177,6 @@
     .profileBodyDiv{
       margin-left: 0;
       width: 100%;
-      height: auto;
     }
     .cardBody{
       display: flex;
@@ -198,6 +196,9 @@
       display: flex;
       margin-left: 0;
       justify-content: space-between;
+    }
+    .userDetails>input{
+      width: 30%;
     }
     .AddButtonDiv{
       height: auto;
