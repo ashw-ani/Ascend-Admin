@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ImageUploader from "./imageUploader";
-import style from "./Teams.module.css";
+import styles from "./Teams.module.css";
 import { CiEdit } from "react-icons/ci";
 import AddTeams from "../../api/addTeams";
 import FetchTeams from "../../api/fetchTeams";
-
+import EditScreen from "./EditScreen/editScreen";
 
 function Teams() {
   const [newTeam, setNewTeam] = useState();
   const [teams, setTeams] = useState();
   const [addTeamClicked, setAddTeamClicked] = useState(false);
-  const [editTeamData,setEditTeamData] = useState();
-  const [editDivWrapper,setEditDivWrapper] = useState(false);
+  const [editTeamData, setEditTeamData] = useState();
+  const [editDivWrapper, setEditDivWrapper] = useState(false);
 
   useEffect(() => {
     const setTeamsFunction = async () => {
@@ -58,21 +58,21 @@ function Teams() {
     await AddTeams(newTeam);
     setAddTeamClicked(!addTeamClicked);
   };
-  const handleEditClick = async (team)=>{
+  const handleEditClick = async (team) => {
     setEditTeamData({
-      name : team.name,
-      points : team.points,
-      logo : team.logo,
+      name: team.name,
+      points: team.points,
+      logo: team.logo,
     });
-    console.log(editTeamData);
+    console.log(editDivWrapper);
     setEditDivWrapper(true);
-  }
+  };
 
   return (
-    <div className={style.teamPage}>
-      {/* {editDivWrapper&&} */}
-      <div className={style.teamForm}>
-        <div className={style.teamNameInput}>
+    <div className={styles.teamPage}>
+     {editDivWrapper && <EditScreen name={editTeamData.name} logo = {editTeamData.logo} points={editTeamData.points} />}
+      <div className={styles.teamForm}>
+        <div className={styles.teamNameInput}>
           <input
             placeholder="Enter the Team name"
             name="newTeam"
@@ -80,30 +80,36 @@ function Teams() {
           />
         </div>
         <ImageUploader onImageUpload={handleImageUpload} />
-        <div className={style.teamSubmit}>
+        <div className={styles.teamSubmit}>
           <button onClick={teamAddHandler}>Add Team</button>
         </div>
       </div>
-      <div className={style.teamNames}>
-        <div className={style.teamHeader}>
-          <div className={style.teamHeaderName}>Teams</div>
-          <div className={style.otherHeaders}>
-            <div className={style.pointHeader}>Points</div>
-            <div className={style.logoHeader}>logos</div>
-            <div className={style.editHeader}>Edit Teams</div>
+      <div className={styles.teamNames}>
+        <div className={styles.teamHeader}>
+          <div className={styles.teamHeaderName}>Teams</div>
+          <div className={styles.otherHeaders}>
+            <div className={styles.pointHeader}>Points</div>
+            <div className={styles.logoHeader}>logos</div>
+            <div className={styles.editHeader}>Edit Teams</div>
           </div>
         </div>
         {teams?.map((team) => {
           return (
-            <div className={style.teamListWrapper}>
-              <div className={style.teamList}>
-                <div className={style.teamName}>{team.name}</div>
-                <div className={style.teamDetails}>
-                  <div className={style.pointsDetails}>{team.points}</div>
-                  <div className={style.logoDetails}>
+            <div className={styles.teamListWrapper}>
+  
+
+              <div className={styles.teamList}>
+                <div className={styles.teamName}>{team.name}</div>
+                <div className={styles.teamDetails}>
+                  <div className={styles.pointsDetails}>{team.points}</div>
+                  <div className={styles.logoDetails}>
                     <img src={team.logo} alt="team_logo" />
                   </div>
-                  <div className={style.editDetails}><button onClick={()=>handleEditClick(team)}><CiEdit/></button></div>
+                  <div className={styles.editDetails}>
+                    <button onClick={() => handleEditClick(team)}>
+                      <CiEdit />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
