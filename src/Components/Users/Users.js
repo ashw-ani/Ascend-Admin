@@ -14,6 +14,7 @@ function Users(props) {
   const [searchData, setSearchData] = useState();
   const [selectedValue, setSelectedValue] = useState("");
   const [loader, setLoader] = useState(false);
+  const [selectPage, setSelectPage] = useState();
   const [validation, setValidation] = useState({
     searchItem: false,
     dropdown: false,
@@ -24,10 +25,10 @@ function Users(props) {
     if (findUser && selectedValue)
       setValidation({ searchItem: true, dropdown: true });
     console.log(validation);
-  }, [findUser, selectedValue]);
+  }, [findUser, selectedValue, selectPage]);
   const onSubmitHandler = async () => {
     const type = selectedValue;
-    const Data = await FetchUsers(findUser, type);
+    const Data = await FetchUsers(findUser, type, selectPage);
     console.log(Data);
     setpageEnd(true);
     setLoader(false);
@@ -53,7 +54,10 @@ function Users(props) {
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
   };
-
+  const handleSelectPageChange = (event) => {
+    setSelectPage(event.target.value);
+    console.log(selectPage);
+  };
   return (
     <div className={styles.container}>
       {editCard && (
@@ -66,54 +70,76 @@ function Users(props) {
           setFindUser={setFindUser}
           placeholderText="Search for the user"
         />
-        <div className={styles.dropdown}>
-          <label htmlFor="myDropdown">Search By :</label>
-          <select
-            required="true"
-            id="myDropdown"
-            value={selectedValue}
-            onChange={handleSelectChange}
-          >
-            <option value="">Select an option</option>
-            <option value="email">Email</option>
-            <option value="phone">Phone</option>
-            <option value="name">Name</option>
-            <option value="team">Team Name</option>
-          </select>
-        </div>
-        <div className={styles.submitSearchButton}>
-          <button
-            onClick={onSubmitHandler}
-            className={
-              validation.searchItem && validation.dropdown
-                ? styles.searchButton
-                : styles.searchButtonDisabled
-            }
-          >
-            Search
-          </button>
+        <div className={styles.searchButtonWrapper}>
+          <div className={styles.dropdown}>
+            <label htmlFor="myDropdown"></label>
+            <select
+              required="true"
+              id="myDropdown"
+              value={selectedValue}
+              onChange={handleSelectChange}
+            >
+              <option value="">Search By</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+              <option value="name">Name</option>
+              <option value="team">Team Name</option>
+            </select>
+          </div>
+          <div className={styles.submitSearchButton}>
+            <button
+              onClick={onSubmitHandler}
+              className={
+                validation.searchItem && validation.dropdown
+                  ? styles.searchButton
+                  : styles.searchButtonDisabled
+              }
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.pageButtonDiv}>
-        <div className={styles.addUsersButtonDiv}>
-          <button onClick={newUserHandler} className={styles.addUsersButton}>
-            Add
-          </button>
-        </div>
-        <div className={styles.buttons}>
-          <span>Page {page} [Max 10 entries]</span>
-          <button className={styles.pageButtons} onClick={prevButtonHandler}>
-            {"<"}
-          </button>
-          {!pageEnd ? (
-            <button className={styles.pageButtons} onClick={nextButtonHandler}>
-              {">"}
-            </button>
-          ) : (
-            <button disabled className={styles.pageButtonsDisabled}>
-              {">"}
-            </button>
-          )}
+        <button onClick={newUserHandler} className={styles.addUsersButton}>
+          Add User
+        </button>
+        <div className={styles.buttonWrapper}>
+          <div className={styles.addUsersButtonDiv}>
+            <div className={styles.dropdown}>
+              {/* Dropdown select */}
+              <select value={selectPage} onChange={handleSelectPageChange}>
+                <option value="">Select number of Entries</option>
+                <option value="10">10 Entries</option>
+                <option value="25">25 Entries</option>
+                <option value="50">50 Entries</option>
+                <option value="100">100 Entries</option>
+              </select>
+            </div>
+          </div>
+          <div className={styles.buttons}>
+            <div className={styles.pageChangeButtons}>
+              <button
+                className={styles.pageButtons}
+                onClick={prevButtonHandler}
+              >
+                {"<"}
+              </button>
+              <span>{page}</span>
+              {!pageEnd ? (
+                <button
+                  className={styles.pageButtons}
+                  onClick={nextButtonHandler}
+                >
+                  {">"}
+                </button>
+              ) : (
+                <button disabled className={styles.pageButtonsDisabled}>
+                  {">"}
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles.userList}>
@@ -123,6 +149,7 @@ function Users(props) {
           setSearchData={setSearchData}
           setpageEndHandler={setpageEndHandler}
           page={page}
+          limit={selectPage}
         />
       </div>
     </div>

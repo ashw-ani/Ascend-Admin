@@ -1,12 +1,22 @@
-const FetchUsers = async (findUser, type) => {
+const FetchUsers = async (findUser, type,selectPage) => {
   var myHeaders = new Headers();
   myHeaders.append("api-key", "123456");
   myHeaders.append("Content-Type", "application/json");
+
+
 
   var raw = JSON.stringify({
     search: findUser,
     type: type,
   });
+  if(selectPage)
+  {
+    raw = JSON.stringify({
+      search:findUser,
+      type:type,
+      limit:selectPage
+    })
+  }
 
   var requestOptions = {
     method: "POST",
@@ -14,6 +24,7 @@ const FetchUsers = async (findUser, type) => {
     body: raw,
     redirect: "follow",
   };
+
 
   const Users = await fetch(
     "https://ascend-server.onrender.com/api/admin/contacts/getDetails",

@@ -24,14 +24,20 @@
   align-items: center;
   justify-content: center;
 }
-.submitSearchButton{
+/* .submitSearchButton{
   margin-right: 2.5rem;
-}
+} */
 .submitSearchButton{
   /* width: 50%; */
   /* margin-right: 2rem; */
-  width: auto;
+  width: 100%;
 }
+/* .addUsersButtonDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+} */
 
 
 /* Css for spinner loading button */
@@ -78,8 +84,8 @@
 }
 .pageButtonDiv{
   display: flex;
-  justify-content: end;
-  margin: 1rem 2rem 0rem 0rem;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 .pageButtons{
    justify-content: end;
@@ -91,10 +97,18 @@
   margin-left: 1rem;
 
 }
+.buttons{
+  display: flex;
+  flex-direction: column;
+}
+.pageChangeButtons{
+  margin: 0.5rem 0.5rem 0rem 0.5rem;
+}
 .addUsersButton{
   background-color: #f45b69;
   color: white;
   border: none;
+  border-radius: 2px;
   padding: 0.3rem 1rem 0.3rem 1rem;
   margin-right: 1rem;
 }
@@ -139,7 +153,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10%;
+  width: 40%;
 }
 
 
@@ -149,6 +163,19 @@
   margin: 2rem 0rem 0rem 1rem;
   background-color: white;
 }
+
+.buttonWrapper{
+    display: flex;
+    flex-direction: row;
+}
+.searchButtonWrapper{
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  justify-content: space-around;
+  align-items: center;
+}
+
 
 
 
@@ -225,7 +252,7 @@
 }
   
 
-@media screen and (max-width:520px) {
+@media screen and (max-width:660px) {
   .userBody{
     display: flex;
     flex-direction: column;
@@ -244,6 +271,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  .searchButtonWrapper{
+    width: 100%;
+    margin: 1rem 0rem 1rem 0rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .buttonWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
   }
 }
 

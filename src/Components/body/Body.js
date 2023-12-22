@@ -3,10 +3,10 @@ import Header from "./Header/Header";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Courses from "../Courses/Courses";
 import Login from "../Login/Login";
-
 import { useMyContext } from "../../Context/PanelContext";
 import Users from "../Users/Users";
 import Dashboard from "../Dashboard/Dashboard";
+import Teams from "../Teams/Teams";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -44,6 +44,10 @@ const Body = (props) => {
         <Route path="/courses" exact>
           <Header>Courses</Header>
           <Courses />
+        </Route>
+        <Route path="/teams" exact>
+          <Header>Teams</Header>
+          <Teams />
         </Route>
       </Switch>
     </div>

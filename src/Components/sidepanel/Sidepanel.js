@@ -1,19 +1,14 @@
 import styles from "./Sidepanel.module.css";
 import SidepanelItem from "./sidepanelitems/Sidepanelitem";
-import Sidepanelsubitem from "./sidepanelsubitems/sidepanelsubitem";
 import { useState } from "react";
-import SidePanelState from "../../Context/SidePanelState";
-
-// import logotext from "../../assets/logo4.png";
-// import mainlogo from "../../assets/logo2.png";
 import logo from "../../assets/logo.jpeg";
-
-import { MdDashboard, MdLeaderboard } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { useHistory } from "react-router-dom";
 import { useMyContext } from "../../Context/PanelContext";
 import { FaUsers } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { PiMicrosoftTeamsLogo } from "react-icons/pi";
 
 const Sidepanel = (props) => {
   const [sideItemsWithMenu, setsideItemsWithMenu] = useState({});
@@ -38,19 +33,6 @@ const Sidepanel = (props) => {
     navigation.push("/");
     console.log("return the props", props);
   };
-  const onClickSubitem = (event) => {
-    // console.log(event.target.getAttribute("name"));
-    navigation.push(`/${event.target.getAttribute("name")}`);
-  };
-
-  const toggleSideitemHandler = (event) => {
-    const key = event.target.getAttribute("name");
-    // console.log("Hy from togglesideitemHandler ", sideItemsWithMenu[key]);
-
-    setsideItemsWithMenu({ [key]: !sideItemsWithMenu[key] });
-    setsideItemsWithoutMenu({});
-    // console.log(sideItemsWithoutMenu);
-  };
 
   const withoutMenuItemsHandler = (event) => {
     const key = event.target.getAttribute("name");
@@ -58,7 +40,6 @@ const Sidepanel = (props) => {
     console.log("Hy from clicking", key, sideItemsWithoutMenu);
     setsideItemsWithMenu({});
     setsideItemsWithoutMenu({ [key]: !sideItemsWithoutMenu[key] });
-    // console.log(sideItemsWithoutMenu);
   };
 
   return (
@@ -74,8 +55,6 @@ const Sidepanel = (props) => {
       </div>
       <div className={styles.sidepanelhead}>
         <img src={logo} alt="logo" className={styles.mainlogo} />
-        {/* <img src={mainlogo} alt="logo" className={styles.mainlogo} />
-        <img src={logotext} alt="logo" className={styles.logotext} /> */}
       </div>
       <div className={styles.sidepanelcontent}>
         <SidepanelItem
@@ -109,6 +88,17 @@ const Sidepanel = (props) => {
         >
           <SiBookstack className={styles.sidepanelicons} name={"courses"} />
           Courses
+        </SidepanelItem>
+
+        <SidepanelItem
+          class={sideItemsWithoutMenu.Teams ? "active" : "inactive"}
+          onclick={(event) => {
+            withoutMenuItemsHandler(event);
+          }}
+          name={"Teams"}
+        >
+          <PiMicrosoftTeamsLogo className={styles.sidepanelicons} name={"Teams"} />
+          Teams
         </SidepanelItem>
 
         <SidepanelItem

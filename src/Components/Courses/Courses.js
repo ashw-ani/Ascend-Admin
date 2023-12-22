@@ -33,34 +33,42 @@ function Courses(props) {
           setFindUser={setFindCourse}
           placeholderText="Search for the course"
         />
-
-        <Button onClick={onSubmitHandler} text="Search" />
-        <Button
-          onClick={() => {
-            setAddCourseCard((prev) => !prev);
-          }}
-          className={styles.addnew}
-          text="+"
-        />
+        <div className={styles.courseButtons}>
+          <div className={styles.button}>
+            <Button onClick={onSubmitHandler} text="Search" />
+          </div>
+          <div className={styles.button}>
+            <Button
+              onClick={() => {
+                setAddCourseCard((prev) => !prev);
+              }}
+              className={styles.addnew}
+              text="+"
+            />
+          </div>
+        </div>
+        
       </div>
       {addCourseCard && <NewUserCard title="Add Course" type="courses" />}
-      <Actions>
-        <ActionButton name="Silver" onClick={filterTierhandler}>
-          Silver
-        </ActionButton>
-        <ActionButton name="Gold" onClick={filterTierhandler}>
-          Gold
-        </ActionButton>
-        <ActionButton name="Platinum" onClick={filterTierhandler}>
-          Platinum
-        </ActionButton>
-        <ActionButton name="Diamond" onClick={filterTierhandler}>
-          Diamond
-        </ActionButton>
-        <ActionButton name="" onClick={filterTierhandler}>
-          All
-        </ActionButton>
-      </Actions>
+      <div className={styles.actions}>
+        <Actions>
+          <ActionButton name="Silver" onClick={filterTierhandler}>
+            Silver
+          </ActionButton>
+          <ActionButton name="Gold" onClick={filterTierhandler}>
+            Gold
+          </ActionButton>
+          <ActionButton name="Platinum" onClick={filterTierhandler}>
+            Platinum
+          </ActionButton>
+          <ActionButton name="Diamond" onClick={filterTierhandler}>
+            Diamond
+          </ActionButton>
+          <ActionButton name="" onClick={filterTierhandler}>
+            All
+          </ActionButton>
+        </Actions>
+      </div>
       <div className={styles.courseList}>
         <CourseList
           search={search}

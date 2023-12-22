@@ -10,7 +10,6 @@
     top: 0;
     height: 100%;
     width: 100%;
-    
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.185);
   }
@@ -52,7 +51,6 @@
   }
   .cardBody{
     display: flex;
-    height: 100%;
     flex-direction: row;
     justify-content: center;
     align-items:center;
@@ -83,7 +81,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    margin: 0.3rem 1rem;
+    margin: 0.3rem 0rem;
     font-size: 15px;
   }
   .userDetails > span {
@@ -93,11 +91,11 @@
     margin-right: 1rem;
   }
   
-  @media screen and (max-width:950px) {
+  /* @media screen and (max-width:950px) {
     .userCard{
       left: 0;
     }
-  }
+  } */
   .AddButtonDiv{
     width: 95%;
     height: 100%;
@@ -127,14 +125,19 @@
     background-color: #f24353;
   }
   
-  @media screen and (max-width:880px) {
+  @media screen and (max-width:950px) {
     .cardWrapper{
       display: flex;
-      flex-wrap: wrap;
     }
-    .cardBody{
+    .Card{
+      width: 100%;
+      left: 0;
+      margin-left: 2rem ;
+      margin-right: 2rem;
+    }
+    /* .cardBody{
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
     }
@@ -143,9 +146,7 @@
       justify-content: center;
       align-items: center;
     }
-    .cardWrapper{
-      height: auto;
-    }
+
     .userCard {
       margin-top: 7rem;
       height: auto;
@@ -164,18 +165,48 @@
     .AddButton{
       margin-bottom: 2rem;
       width: 40%;
-    }
+    } */
     
   }
-  
-  @media screen and (max-width:380px) {
-    .userDetails{
-      width: 70%;
+  @media screen and (max-width:750px) {
+    .cardBodyDiv{
+      margin: 0;
+      display: flex;
+      width: 100%;
     }
-    .updateButton{
-      margin-right: 2rem;
+    .profileBodyDiv{
+      margin-left: 0;
+      width: 100%;
+    }
+    .cardBody{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .cardWrapper{
+      height:100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .Card{
+      margin-top: 4rem;
+      height: 100%;
+    }
+    .userDetails{
+      display: flex;
+      margin-left: 0;
+      justify-content: space-between;
+    }
+    .userDetails>input{
+      width: 30%;
+    }
+    .AddButtonDiv{
+      height: auto;
+      margin-left: 0;
+      margin-bottom: 1rem;
     }
   }
+  
 /* deleteCard */
 .cardDeleteDiv{
   

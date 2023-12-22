@@ -1,0 +1,100 @@
+.teamPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.teamForm{
+    margin: 1rem 1rem 1rem 1rem;
+    width: 97%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+}
+.teamNameInput{
+    width: 96.5%;
+}
+.teamNameInput>input{
+    width: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+    margin-bottom: 1rem;
+
+}
+.dropzone{
+    margin-bottom: 1rem;
+}
+.teamSubmit{
+    margin-bottom: 1rem;
+}
+.teamSubmit>button{
+    width: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+    border: none;
+    background-color: #f45b69;
+    color: white;
+    border-radius: 2px;
+}
+.teamSubmit>button:hover{
+    background-color: #f24353;
+    cursor: pointer;
+}
+
+.teamNames{
+    background-color: white;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+}
+.teamHeader{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1rem 1rem 1rem;
+    border-bottom: 1px solid black;
+}
+.teamHeaderName{
+    width: 25%;
+}
+.otherHeaders{
+    display: flex;
+    width: 75%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.team{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.teamList{
+    display: flex;
+    flex-direction: row;
+
+}
+.teamName{
+    width: 25%;
+    height: 100%;
+    background-color:white;
+}
+.teamDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 75%;
+    background-color: white;
+}
+.logoDetails>img{
+    width: 1rem;
+    height: 1rem;
+}
+.teamListWrapper{
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+.editDetails>button{
+    border: none;
+    background-color: white;
+}
+.editDetails>button:hover{
+    cursor: pointer;
+}
