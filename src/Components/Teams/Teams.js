@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageUploader from "./imageUploader";
 import style from "./Teams.module.css";
+import { CiEdit } from "react-icons/ci";
 import AddTeams from "../../api/addTeams";
+import FetchTeams from "../../api/fetchTeams";
+
 
 function Teams() {
   const [newTeam, setNewTeam] = useState();
-  const [addTeamClicked,setAddTeamClicked] = useState(false);
+  const [teams, setTeams] = useState();
+  const [addTeamClicked, setAddTeamClicked] = useState(false);
+  const [editTeamData,setEditTeamData] = useState();
+  const [editDivWrapper,setEditDivWrapper] = useState(false);
+
+  useEffect(() => {
+    const setTeamsFunction = async () => {
+      const teamData = await FetchTeams();
+      setTeams(teamData.teams);
+    };
+    setTeamsFunction();
+  }, [addTeamClicked]);
+
   const onChangeTeamHandler = (event) => {
-    setNewTeam({name:event.target.value});
+    setNewTeam({ name: event.target.value });
   };
   const imageUploadHandler = async (img) => {
     const formData1 = new FormData();
@@ -29,35 +44,71 @@ function Teams() {
     return imgData;
   };
   const handleImageUpload = async (acceptedFiles) => {
-    setAddTeamClicked(true);
     const imgData = await imageUploadHandler(acceptedFiles[0]);
-    const {display_url} = imgData;
+    const { display_url } = imgData;
     const logo = display_url;
     setNewTeam({
-        ...newTeam,
-        logo,
-        points:0
+      ...newTeam,
+      logo,
+      points: 0,
     });
-    setAddTeamClicked(false);
   };
   const teamAddHandler = async () => {
     console.log(newTeam);
-    const res = await AddTeams(newTeam);
-    console.log("response from teams",res);
+    await AddTeams(newTeam);
+    setAddTeamClicked(!addTeamClicked);
   };
+  const handleEditClick = async (team)=>{
+    setEditTeamData({
+      name : team.name,
+      points : team.points,
+      logo : team.logo,
+    });
+    console.log(editTeamData);
+    setEditDivWrapper(true);
+  }
 
   return (
-    <div className={style.teamForm}>
-      <div className={style.teamNameInput}>
-        <input
-          placeholder="Enter the Team name"
-          name="newTeam"
-          onChange={onChangeTeamHandler}
-        />
+    <div className={style.teamPage}>
+      {/* {editDivWrapper&&} */}
+      <div className={style.teamForm}>
+        <div className={style.teamNameInput}>
+          <input
+            placeholder="Enter the Team name"
+            name="newTeam"
+            onChange={onChangeTeamHandler}
+          />
+        </div>
+        <ImageUploader onImageUpload={handleImageUpload} />
+        <div className={style.teamSubmit}>
+          <button onClick={teamAddHandler}>Add Team</button>
+        </div>
       </div>
-      <ImageUploader onImageUpload={handleImageUpload} />
-      <div className={style.teamSubmit}>
-        <button onClick={teamAddHandler}>Add Team</button>
+      <div className={style.teamNames}>
+        <div className={style.teamHeader}>
+          <div className={style.teamHeaderName}>Teams</div>
+          <div className={style.otherHeaders}>
+            <div className={style.pointHeader}>Points</div>
+            <div className={style.logoHeader}>logos</div>
+            <div className={style.editHeader}>Edit Teams</div>
+          </div>
+        </div>
+        {teams?.map((team) => {
+          return (
+            <div className={style.teamListWrapper}>
+              <div className={style.teamList}>
+                <div className={style.teamName}>{team.name}</div>
+                <div className={style.teamDetails}>
+                  <div className={style.pointsDetails}>{team.points}</div>
+                  <div className={style.logoDetails}>
+                    <img src={team.logo} alt="team_logo" />
+                  </div>
+                  <div className={style.editDetails}><button onClick={()=>handleEditClick(team)}><CiEdit/></button></div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

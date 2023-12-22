@@ -3,7 +3,6 @@ import Header from "./Header/Header";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Courses from "../Courses/Courses";
 import Login from "../Login/Login";
-
 import { useMyContext } from "../../Context/PanelContext";
 import Users from "../Users/Users";
 import Dashboard from "../Dashboard/Dashboard";
