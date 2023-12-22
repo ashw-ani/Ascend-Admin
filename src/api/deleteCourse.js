@@ -23,7 +23,6 @@ const DeleteCourse = async (_id) => {
   //   .then(result => console.log(result))
   //   .catch(error => console.log('error', error));
   const data = await Users.json();
-  console.log("hello from deleteCourse", data);
   return data;
 };
 export default DeleteCourse;

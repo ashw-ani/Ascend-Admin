@@ -5,6 +5,9 @@ import { CiEdit } from "react-icons/ci";
 import AddTeams from "../../api/addTeams";
 import FetchTeams from "../../api/fetchTeams";
 import EditScreen from "./EditScreen/editScreen";
+import FetchTeamMembers from "../../api/getTeamMembers";
+import DeleteTeam from "../../api/deleteTeam";
+
 
 function Teams() {
   const [newTeam, setNewTeam] = useState();
@@ -59,7 +62,10 @@ function Teams() {
     setAddTeamClicked(!addTeamClicked);
   };
   const handleEditClick = async (team) => {
+    const teamMembersData = await FetchTeamMembers(team.name);
+    console.log(teamMembersData);
     setEditTeamData({
+      _id:team._id,
       name: team.name,
       points: team.points,
       logo: team.logo,
@@ -67,10 +73,18 @@ function Teams() {
     console.log(editDivWrapper);
     setEditDivWrapper(true);
   };
+  const crossButtonClickHandler = ()=>{
+    setEditDivWrapper(false);
+  }
+  const deleteCourseButtonHandler = async ()=>{
+    await DeleteTeam(editTeamData._id);
+    setAddTeamClicked(!addTeamClicked);
+    setEditDivWrapper(false);
+   }
 
   return (
     <div className={styles.teamPage}>
-     {editDivWrapper && <EditScreen name={editTeamData.name} logo = {editTeamData.logo} points={editTeamData.points} />}
+     {editDivWrapper && <EditScreen deleteCourseButtonHandler={deleteCourseButtonHandler} _id={editTeamData._id} name={editTeamData.name} logo = {editTeamData.logo} crossButtonClickHandler={crossButtonClickHandler} points={editTeamData.points} />}
       <div className={styles.teamForm}>
         <div className={styles.teamNameInput}>
           <input
@@ -96,8 +110,6 @@ function Teams() {
         {teams?.map((team) => {
           return (
             <div className={styles.teamListWrapper}>
-  
-
               <div className={styles.teamList}>
                 <div className={styles.teamName}>{team.name}</div>
                 <div className={styles.teamDetails}>
