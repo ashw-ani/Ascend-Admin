@@ -1,4 +1,4 @@
-.editScreenWrapper{
+.editScreenWrapper {
     position: absolute;
     z-index: 20;
     width: 100%;
@@ -6,16 +6,130 @@
     left: 0;
     top: 0;
 }
-.editScreenBlur{
+
+.editScreenCardHeader {
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.headingCrossButton>button{
+    border: none;
+    color: white;
+    background-color: #f45b69;
+    border-radius: 2px;
+}
+.headingCrossButton>button:hover{
+    background-color: #f24353;
+    cursor: pointer;
+}
+
+.editScreenBlur {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(2px);
+    background-color: rgba(29, 29, 29, 0.131);
+    backdrop-filter: blur(5px);
 }
-.editScreenCard{
+
+.editScreenCard {
     background-color: white;
-    width: 75%; 
+    width: 75%;
     margin-left: 20%;
+    border-radius: 4px;
+}
+
+.teamImageDivWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamNameWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.teamImage {
+    width: 10%;
+    height: 10%;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    overflow: hidden;
+}
+
+.teamImage>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teamName {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.teamPoints {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 1rem;
+
+}
+
+.fullTeamDetails {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.teamDetailsWrapper {
+    width: 50%;
+}
+
+.teamMemberDetails {
+    width: 50%;
+}
+
+.totalTally {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamMemberDetails {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.logoChange {
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editbutton>button {
+    color: white;
+    background-color: #f45b69;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0rem 1rem 1rem 1rem;
+}
+
+.editbutton>button:hover {
+    cursor: pointer;
+    background-color: #f24353;
 }

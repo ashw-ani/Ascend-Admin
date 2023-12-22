@@ -38,7 +38,6 @@ const Sidepanel = (props) => {
   const withoutMenuItemsHandler = (event) => {
     const key = event.target.getAttribute("name");
     navigation.push(`/${key}`);
-    console.log("Hy from clicking", key, sideItemsWithoutMenu);
     setsideItemsWithMenu({});
     setsideItemsWithoutMenu({ [key]: !sideItemsWithoutMenu[key] });
   };
