@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Events.module.css'
 import Event from './Event/Event'
+import GetEvents from '../../api/GetEvents';
 
-function Events() {
+
+
+function Events(props) {
+  const [allEvents,setAllEvents] = useState();
+
+  useEffect(()=>{
+    const getEvents = async ()=>{
+      const events = await GetEvents();
+
+      console.log(events);
+      setAllEvents(events);
+    }
+    getEvents();
+  },[])
   return (
     <div className={styles.eventsPage}>
-      <Event title="On going Events" />
-      <Event title="Upcoming Events"/>
-      <Event title="Past Events"/>
+      {allEvents!==undefined&&<Event title="On going Events" name = {allEvents.ongoing[0]}/>}
+      {/* <Event title="Upcoming Events"/> */}
+      {allEvents!==undefined&&<Event title="Past Events" name ={allEvents.upcoming[0]}/>}
     </div>
   )
 }
