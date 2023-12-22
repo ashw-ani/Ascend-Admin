@@ -1,0 +1,21 @@
+.editScreenWrapper{
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.editScreenBlur{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+.editScreenCard{
+    background-color: white;
+    width: 75%; 
+    margin-left: 20%;
+}

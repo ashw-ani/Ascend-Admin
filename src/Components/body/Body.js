@@ -7,6 +7,7 @@ import { useMyContext } from "../../Context/PanelContext";
 import Users from "../Users/Users";
 import Dashboard from "../Dashboard/Dashboard";
 import Teams from "../Teams/Teams";
+import Events from "../Events/Events";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -48,6 +49,10 @@ const Body = (props) => {
         <Route path="/teams" exact>
           <Header>Teams</Header>
           <Teams />
+        </Route>
+        <Route path="/events" exact>
+          <Header>Events</Header>
+          <Events />
         </Route>
       </Switch>
     </div>

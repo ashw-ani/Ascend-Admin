@@ -9,6 +9,7 @@ import { useMyContext } from "../../Context/PanelContext";
 import { FaUsers } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { PiMicrosoftTeamsLogo } from "react-icons/pi";
+import { MdEmojiEvents } from "react-icons/md";
 
 const Sidepanel = (props) => {
   const [sideItemsWithMenu, setsideItemsWithMenu] = useState({});
@@ -99,6 +100,17 @@ const Sidepanel = (props) => {
         >
           <PiMicrosoftTeamsLogo className={styles.sidepanelicons} name={"Teams"} />
           Teams
+        </SidepanelItem>
+
+        <SidepanelItem
+          class={sideItemsWithoutMenu.Events ? "active" : "inactive"}
+          onclick={(event) => {
+            withoutMenuItemsHandler(event);
+          }}
+          name={"Events"}
+        >
+          <MdEmojiEvents className={styles.sidepanelicons} name={"Events"} />
+          Events
         </SidepanelItem>
 
         <SidepanelItem
