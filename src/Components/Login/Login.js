@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import Logo from "../../assets/Logo_inside.png";
 import logoNamed from "../../assets/logo.jpeg";
-//for show password
 
 //login button
 import login from "../../api/getLogin";
