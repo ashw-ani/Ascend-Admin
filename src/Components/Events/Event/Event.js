@@ -1,20 +1,69 @@
+import { useEffect, useState } from "react";
 import styles from "./Event.module.css";
-import Cards from "./Cards";
+import EventCard from "../Event/Cards";
+import GetEvents from "../../../api/GetEvents";
+import EditScreen from "../../Teams/EditScreen/editScreen";
 
-function Event(props) {
+const Events = (props) => {
+  const [events, setEvents] = useState(null);
+  const [addEventDivWrapper, setAddEventDivWrapper] = useState(false);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const renderEvent = props.data;
+      const events = await GetEvents();
+      // console.log("hello from events js",events);
+      setEvents(events[renderEvent]);
+    };
+    fetchEvents();
+  }, []);
+  const addEventHandler = () => {
+    setAddEventDivWrapper(true);
+  };
+  const cancelEventHandler = () => {
+    setAddEventDivWrapper(false);
+  };
+  
+
   return (
-    <div className={styles.eventList}>
-      <div className={styles.eventHeader}>
-        <div className={styles.headerTitle}>{props.title}</div>
-        <div className={styles.headerAddEvents}>
-          <button>Add Event</button>
+    <div className={styles.events}>
+      {addEventDivWrapper && (
+        <EditScreen
+          cancelEventHandler={cancelEventHandler}
+          title={"Add Event"}
+          nameEditField={"Event Name"}
+          secondEditField={"Description"}
+        />
+      )}
+      {events && (
+        <div className={styles.groupevents}>
+          <div className={styles.eventHeader}>
+            <div className={styles.eventheading}>
+              <h1>{props.title}</h1>
+            </div>
+            <div className={styles.eventAddButtonDiv}>
+              <button onClick={addEventHandler}>Add Event</button>
+            </div>
+          </div>
+          <div className={styles.cardWrapper}>
+            {events.map((event) => (
+              <EventCard
+              _id={event._id}
+                name={event.name}
+                description={event.description}
+                joiningLink={event.link}
+                image={event.image}
+                // buttontext={"Join Now"}
+              ></EventCard>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={styles.eventCards}>
-        <Cards Event={props.name} />
-      </div>
+      )}
+      {/* <div className={styles.groupevents}>
+        <h1 className={styles.eventheading}>Upcoming Events</h1>
+        <EventCard name={events}></EventCard>
+      </div> */}
     </div>
   );
-}
-
-export default Event;
+};
+export default Events;

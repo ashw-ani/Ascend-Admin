@@ -1,26 +1,27 @@
-import React from "react";
+
+import DeleteEvent from "../../../api/DeleteEvent";
 import styles from "./Event.module.css";
 
-function Cards(props) {
+const EventCard = (props) => {
+  const deleteEventHandler = async (_id)=>{
+    await DeleteEvent(_id);
+    window.location.reload();
+  }
   return (
-    <div className={styles.eventCard}>
-      <div className={styles.eventImage}>
-        <img src={props.Event.image} alt="event img" />
+    <div className={styles.card}>
+      <div className={styles.logo}>
+        <img src={`${props.image}`} alt="event"/>
       </div>
-      <div className={styles.eventName}>
-        <span>{props.Event.name}</span>
-      </div>
-      <div className={styles.startTime}>
-        <span>{props.Event.startTime}</span>
-      </div>
-      <div className={styles.endTime}>
-        <span>{props.Event.endTime}</span>
-      </div>
-      <div className={styles.description}>
-        <span>{props.Event.description}</span>
+      <div className={styles.heading}>{props.name}</div>
+      <div className={styles.description}>{props.description}</div>
+
+      <div
+        className={styles.button}
+      >
+        <button>Expand</button>
+        <button onClick={()=>deleteEventHandler(props._id)}>Delete</button>
       </div>
     </div>
   );
-}
-
-export default Cards;
+};
+export default EventCard;
