@@ -80,6 +80,7 @@ function Teams() {
     await DeleteTeam(editTeamData._id);
     setAddTeamClicked(!addTeamClicked);
     setEditDivWrapper(false);
+    console.log("hy")
    }
 
   return (

@@ -8,11 +8,14 @@ import Users from "../Users/Users";
 import Dashboard from "../Dashboard/Dashboard";
 import Teams from "../Teams/Teams";
 import Events from "../Events/Events";
+import { useEffect, useState } from "react";
+import GetEvents from "../../api/GetEvents";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
 
   const { isVisible, toggleVisibility } = useMyContext();
+  
 
   const hideSidePanelHandler = () => {
     // Call toggleVisibility to toggle the visibility state
@@ -20,7 +23,16 @@ const Body = (props) => {
     toggleVisibility();
     console.log("isVisible ", isVisible);
   };
-
+  // const [allEvents,setAllEvents] = useState();
+  
+  // useEffect(()=>{
+  //   const getEvents = async ()=>{
+  //     const events = await GetEvents();
+  //     console.log(events);
+  //     setAllEvents(events);
+  //   }
+  //   getEvents();
+  // },[])
   return (
     <div className={styles.body}>
       {showPaneltouch && (
@@ -52,7 +64,7 @@ const Body = (props) => {
         </Route>
         <Route path="/events" exact>
           <Header>Events</Header>
-          <Events />
+          <Events  />
         </Route>
       </Switch>
     </div>
