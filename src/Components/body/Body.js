@@ -46,10 +46,6 @@ const Body = (props) => {
           <Header>Dashboard</Header>
           <Dashboard />
         </Route>
-        {/* <Route path="/dashboard" exact>
-          <Header>Dashboard</Header>
-          <Dashboard />
-        </Route> */}
         <Route path="/users" exact>
           <Header>Users</Header>
           <Users />
