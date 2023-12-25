@@ -1,0 +1,67 @@
+.habitsPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.habitsCreate{
+    background-color: white;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 2px;
+}
+.habitCreateHeader{
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+.habitsCreateTitle{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    /* margin: 1rem 1rem; */
+    margin-top: 1rem;
+}
+.dropdown{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* margin:1rem 1rem; */
+}
+.addHabitsButtons{
+    width: 100%;
+}
+.addHabitsButtons>button{
+    color: white;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #f45b69;
+    border-radius: 2px;
+}
+.addHabitsButtons>button:hover{
+    cursor: pointer;
+    background-color: #f24353;
+}
+
+.showHabits{
+    background-color: white;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 2px;
+}
+.eachHabitDiv{
+    padding: 0.5rem 0.5rem;
+    background-color: #161a37;
+    color: white;
+    border-radius: 8px;
+    margin: 0.5rem;
+}

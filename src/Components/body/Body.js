@@ -2,15 +2,12 @@ import styles from "./Body.module.css";
 import Header from "./Header/Header";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import Courses from "../Courses/Courses";
-import Login from "../Login/Login";
 import { useMyContext } from "../../Context/PanelContext";
 import Users from "../Users/Users";
 import Dashboard from "../Dashboard/Dashboard";
 import Teams from "../Teams/Teams";
 import Events from "../Events/Events";
-import { useEffect, useState } from "react";
-import GetEvents from "../../api/GetEvents";
-import Habbits from "../Habbits/Habbits";
+import Habits from "../Habits/Habits";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -64,8 +61,8 @@ const Body = (props) => {
           <Events  />
         </Route>
         <Route path="/habbits" exact>
-          <Header>Habbits</Header>
-          <Habbits />
+          <Header>Habits</Header>
+          <Habits />
         </Route>
       </Switch>
     </div>
