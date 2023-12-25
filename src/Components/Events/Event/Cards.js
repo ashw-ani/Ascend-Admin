@@ -1,4 +1,3 @@
-
 import DeleteEvent from "../../../api/DeleteEvent";
 import styles from "./Event.module.css";
 
@@ -18,7 +17,6 @@ const EventCard = (props) => {
       <div
         className={styles.button}
       >
-        <button>Expand</button>
         <button onClick={()=>deleteEventHandler(props._id)}>Delete</button>
       </div>
     </div>

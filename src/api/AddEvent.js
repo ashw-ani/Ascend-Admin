@@ -19,9 +19,7 @@ const AddEvents = async (eventData) => {
       "https://ascend-server.onrender.com/api/admin/events/addEvent",
       requestOptions
     );
-    //   .then(response => response.text())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
+    
     const data = await response.json();
     console.log("hello from AddEvents", data);
     return data;

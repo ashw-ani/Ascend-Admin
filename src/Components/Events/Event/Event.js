@@ -21,13 +21,12 @@ const Events = (props) => {
     setAddEventDivWrapper(true);
   };
   const cancelEventHandler = () => {
+
     setAddEventDivWrapper(false);
   };
-  
-
   return (
     <div className={styles.events}>
-      {addEventDivWrapper && (
+     {addEventDivWrapper && (
         <EditScreen
           cancelEventHandler={cancelEventHandler}
           title={"Add Event"}
@@ -53,6 +52,7 @@ const Events = (props) => {
                 description={event.description}
                 joiningLink={event.link}
                 image={event.image}
+                setExpandEvent={addEventHandler}
                 // buttontext={"Join Now"}
               ></EventCard>
             ))}
