@@ -85,7 +85,7 @@ function Teams() {
 
   return (
     <div className={styles.teamPage}>
-     {editDivWrapper && <EditScreen deleteCourseButtonHandler={deleteCourseButtonHandler} _id={editTeamData._id} name={editTeamData.name} logo = {editTeamData.logo} crossButtonClickHandler={crossButtonClickHandler} points={editTeamData.points} />}
+     {editDivWrapper && <EditScreen title={'Add Teams'} nameEditField={'Team Name'} secondEditField={'Points'} deleteCourseButtonHandler={deleteCourseButtonHandler} _id={editTeamData._id} name={editTeamData.name} logo = {editTeamData.logo} crossButtonClickHandler={crossButtonClickHandler} points={editTeamData.points} />}
       <div className={styles.teamForm}>
         <div className={styles.teamNameInput}>
           <input

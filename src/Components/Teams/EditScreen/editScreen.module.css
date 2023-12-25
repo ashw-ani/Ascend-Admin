@@ -89,7 +89,7 @@
 }
 
 .teamDetailsWrapper {
-    width: 50%;
+    width: 100%;
 }
 
 .teamMemberDetails {
@@ -130,6 +130,59 @@
 }
 
 .editbutton>button:hover {
+    cursor: pointer;
+    background-color: #f24353;
+}
+/* css for timeDate */
+.dateTimeDivWrapper{
+    font-size: small;
+    width: 100%;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+}
+.dateTimeDiv{
+    padding: 1rem 4rem;
+    margin-right: 1rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.displayDate{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.datePickerInput{
+    width: 100%;
+}
+
+
+/* css for add event */
+.addMeetLink{
+    margin: 0rem 1rem;
+}
+.linkInput>input{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+.addEventButton{
+    margin: 0rem 1rem 1rem 1rem;
+}
+.addEventButton>button{
+    width: 100%;
+    color: white;
+    background-color: #f45b69;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.addEventButton>button:hover {
     cursor: pointer;
     background-color: #f24353;
 }

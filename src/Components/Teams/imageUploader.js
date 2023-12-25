@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import style from './Teams.module.css'
 
-const ImageUploader = ({ onImageUpload }) => {
+const ImageUploader = ({ title,onImageUpload }) => {
   const [fileSelected, setFileSelected] = useState('Drag or select team icon here');
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -20,7 +20,7 @@ const ImageUploader = ({ onImageUpload }) => {
       <div {...getRootProps()} className={style.dropzone} style={dropzoneStyles}>
         <input {...getInputProps()} />
         {isDragActive ? (
-          <p>Drop the team icon here ...</p>
+          <p>Drop the {title==='Add Teams'?'Team':'Event'} icon here ...</p>
         ) : (
           <p>{fileSelected}</p>
         )}
