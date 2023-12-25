@@ -10,6 +10,7 @@ import Teams from "../Teams/Teams";
 import Events from "../Events/Events";
 import { useEffect, useState } from "react";
 import GetEvents from "../../api/GetEvents";
+import Habbits from "../Habbits/Habbits";
 
 const Body = (props) => {
   const { showPaneltouch, updateShowPaneltouch } = useMyContext();
@@ -61,6 +62,10 @@ const Body = (props) => {
         <Route path="/events" exact>
           <Header>Events</Header>
           <Events  />
+        </Route>
+        <Route path="/habbits" exact>
+          <Header>Habbits</Header>
+          <Habbits />
         </Route>
       </Switch>
     </div>

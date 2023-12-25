@@ -10,6 +10,8 @@ import { FaUsers } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { PiMicrosoftTeamsLogo } from "react-icons/pi";
 import { MdEmojiEvents } from "react-icons/md";
+import { Si4Chan } from "react-icons/si";
+
 
 const Sidepanel = (props) => {
   const [sideItemsWithMenu, setsideItemsWithMenu] = useState({});
@@ -110,6 +112,17 @@ const Sidepanel = (props) => {
         >
           <MdEmojiEvents className={styles.sidepanelicons} name={"Events"} />
           Events
+        </SidepanelItem>
+
+        <SidepanelItem
+          class={sideItemsWithoutMenu.Habbits ? "active" : "inactive"}
+          onclick={(event) => {
+            withoutMenuItemsHandler(event);
+          }}
+          name={"Habbits"}
+        >
+          <Si4Chan className={styles.sidepanelicons} name={"Habits"} />
+          Habbits
         </SidepanelItem>
 
         <SidepanelItem

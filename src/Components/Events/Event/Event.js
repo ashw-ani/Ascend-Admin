@@ -11,9 +11,10 @@ const Events = (props) => {
   useEffect(() => {
     const fetchEvents = async () => {
       const renderEvent = props.data;
-      const events = await GetEvents();
+      const event = await GetEvents();
       // console.log("hello from events js",events);
-      setEvents(events[renderEvent]);
+      setEvents(event[renderEvent]);
+      
     };
     fetchEvents();
   }, []);
@@ -40,9 +41,9 @@ const Events = (props) => {
             <div className={styles.eventheading}>
               <h1>{props.title}</h1>
             </div>
-            <div className={styles.eventAddButtonDiv}>
+           {props.title==="On going Events" ? <div className={styles.eventAddButtonDiv}>
               <button onClick={addEventHandler}>Add Event</button>
-            </div>
+            </div>:""}
           </div>
           <div className={styles.cardWrapper}>
             {events.map((event) => (
@@ -52,6 +53,8 @@ const Events = (props) => {
                 description={event.description}
                 joiningLink={event.link}
                 image={event.image}
+                startTime={event.startTime}
+                endTime={event.endTime}
                 setExpandEvent={addEventHandler}
                 // buttontext={"Join Now"}
               ></EventCard>
