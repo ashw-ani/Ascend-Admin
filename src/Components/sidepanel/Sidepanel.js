@@ -115,14 +115,14 @@ const Sidepanel = (props) => {
         </SidepanelItem>
 
         <SidepanelItem
-          class={sideItemsWithoutMenu.Habbits ? "active" : "inactive"}
+          class={sideItemsWithoutMenu.habits ? "active" : "inactive"}
           onclick={(event) => {
             withoutMenuItemsHandler(event);
           }}
-          name={"Habbits"}
+          name={"habits"}
         >
           <Si4Chan className={styles.sidepanelicons} name={"Habits"} />
-          Habbits
+          Habits
         </SidepanelItem>
 
         <SidepanelItem
