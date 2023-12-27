@@ -16,7 +16,7 @@ const AddCourse = async (cardData) => {
   };
 
   const Users = await fetch(
-    "https://ascend-server.onrender.com/api/admin/course/add",
+    `${process.env.REACT_APP_SERVER_URL}api/admin/course/add`,
     requestOptions
   );
   //   .then(response => response.text())

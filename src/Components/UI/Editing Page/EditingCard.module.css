@@ -15,7 +15,7 @@
 .editingCard {
     background-color: white;
     width: 70%;
-    height: 70%;
+    height: auto;
     margin-top: 3rem;
     margin-left: 15rem;
     border-radius: 2px;
@@ -237,4 +237,38 @@
 .addEventButton>button:hover {
     cursor: pointer;
     background-color: #f24353;
+}
+
+
+
+/* Edit Habit */
+.editHabitBody{
+    padding: 0rem 1rem 1rem 1rem;
+    width: auto;
+}
+.habitsCreateTitle{
+    display: flex;
+    margin: 0.5rem 0.5rem;
+    justify-content: space-between;
+}
+.dropdown{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0.5rem;
+}
+.addHabitsButtons{
+  display: flex;
+}
+.addHabitsButtons>button{
+    width: 100%;
+    border: none;
+    color: white;
+    background-color: #f45b69;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0.5rem;
+
+}
+.addHabitsButtons>button:hover{
+    background-color: #f24353;
+    cursor: pointer;
 }

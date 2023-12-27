@@ -16,7 +16,7 @@ const DeleteHabit = async (_id) => {
     };
   
     const response = await fetch(
-      "https://ascend-server.onrender.com/api/admin/habits/deleteHabit",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/habits/deleteHabit`,
       requestOptions
     );
 

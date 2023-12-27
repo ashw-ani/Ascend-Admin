@@ -60,7 +60,7 @@ const Body = (props) => {
           <Header>Events</Header>
           <Events  />
         </Route>
-        <Route path="/habbits" exact>
+        <Route path="/habits" exact>
           <Header>Habits</Header>
           <Habits />
         </Route>

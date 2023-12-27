@@ -16,7 +16,7 @@ const DeleteTeam = async (_id) => {
     };
   
     const remainingTeams = await fetch(
-      "https://ascend-server.onrender.com/api/admin/teams/delete",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/teams/delete`,
       requestOptions
     );
     //   .then(response => response.text())

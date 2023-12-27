@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styles from "./EditingCard.module.css";
 import { GiCancel } from "react-icons/gi";
 import EditEvent from "./EditEvent";
+import EditHabit from "./EditHabit";
 
 
 function EditingCard(props) {
   const cancelEditHandler = () => {
+    props.refresh();
     props.setEditPage(false);
   };
 
@@ -21,6 +23,9 @@ function EditingCard(props) {
         <div className={styles.cardBody}>
           {props.heading === "Edit Event" && (
            <EditEvent data = {props.data} />
+          )}
+          {props.heading === "Edit Habit"&&(
+            <EditHabit cancelEditHandler={cancelEditHandler} editHabitData = {props.editHabitData}/>
           )}
         </div>
       </div>

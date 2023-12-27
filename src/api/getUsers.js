@@ -8,7 +8,7 @@ const GetUsers = async (page,limit) => {
 
     
     const Users = await fetch(
-        `https://ascend-server.onrender.com/api/admin/contacts/list?page=${page}&limit=${pageLimit}`,{
+        `${process.env.REACT_APP_SERVER_URL}/api/admin/contacts/list?page=${page}&limit=${pageLimit}`,{
         }
     );
     const UsersData = await Users.json();

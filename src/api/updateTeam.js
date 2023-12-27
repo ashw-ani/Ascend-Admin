@@ -12,7 +12,7 @@ const UpdateTeam = async (Team) => {
       redirect: 'follow'
     };
     
-    const response = await fetch("https://ascend-server.onrender.com/api/admin/teams/update", requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/admin/teams/update`, requestOptions);
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
