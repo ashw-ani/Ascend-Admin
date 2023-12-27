@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Habits.module.css";
 import AddHabits from "../../api/AddHabits";
 import GetHabits from "../../api/GetHabits";
+import { MdDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
+
+import DeleteHabit from "../../api/DeleteHabit";
 
 function Habits() {
   const [formData, setFormData] = useState({
@@ -11,7 +15,7 @@ function Habits() {
     },
   });
   const [habits, setHabits] = useState();
-  const [refresh,setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const getHabitData = async () => {
       const habitData = await GetHabits();
@@ -37,6 +41,12 @@ function Habits() {
 
   const onSubmitHandler = async () => {
     await AddHabits(formData);
+    setRefresh(!refresh);
+  };
+
+  const editHabitHandler = async (_id) => {};
+  const deleteHabitHandler = async (_id) => {
+    await DeleteHabit(_id);
     setRefresh(!refresh);
   };
   return (
@@ -69,7 +79,25 @@ function Habits() {
         <div className={styles.habitCreateHeader}>Habits</div>
         {habits !== undefined &&
           habits.map((eachHabit) => {
-            return <div className={styles.eachHabitDiv}>{eachHabit.title}</div>;
+            return (
+              <div className={styles.eachHabitDiv}>
+                <div className={styles.eachHabitTitle}>{eachHabit.title}</div>
+                <div className={styles.eachHabit}>
+                  <div
+                    onClick={() => editHabitHandler(eachHabit._id)}
+                    className={styles.eachHabitEdit}
+                  >
+                    <CiEdit />
+                  </div>
+                  <div
+                    onClick={() => deleteHabitHandler(eachHabit._id)}
+                    className={styles.eachHabitDelete}
+                  >
+                    <MdDelete />
+                  </div>
+                </div>
+              </div>
+            );
           })}
       </div>
     </div>
