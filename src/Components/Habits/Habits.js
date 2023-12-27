@@ -4,9 +4,8 @@ import AddHabits from "../../api/AddHabits";
 import GetHabits from "../../api/GetHabits";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
-import DatePicker from "react-datepicker";
+
 import DeleteHabit from "../../api/DeleteHabit";
-import EditingCard from "../UI/Editing Page/EditingCard";
 
 function Habits() {
   const [formData, setFormData] = useState({
@@ -15,10 +14,8 @@ function Habits() {
       type: "",
     },
   });
-  const [scheduleTime,setScheduleTime] = useState(new Date());
   const [habits, setHabits] = useState();
   const [refresh, setRefresh] = useState(false);
-  const [editHabit,setEditHabit] = useState(false);
   useEffect(() => {
     const getHabitData = async () => {
       const habitData = await GetHabits();
@@ -42,44 +39,23 @@ function Habits() {
     }
   };
 
-
-  const scheduleTimeChangeHandler = (date)=>{
-    setScheduleTime(date);
-  } 
   const onSubmitHandler = async () => {
-    setFormData((prevData)=>{
-      return {...prevData,displayFrom:scheduleTime.getTime()};
-    })
     await AddHabits(formData);
     setRefresh(!refresh);
   };
-  const editHabitHandler = async (_id) => {
-    setEditHabit(true);
-  };
+
+  const editHabitHandler = async (_id) => {};
   const deleteHabitHandler = async (_id) => {
     await DeleteHabit(_id);
     setRefresh(!refresh);
   };
   return (
     <div className={styles.habitsPage}>
-    {editHabit&&<EditingCard heading={'Edit Habit'} setEditPage={setEditHabit}/>}
       <div className={styles.habitsCreate}>
         <div className={styles.habitCreateHeader}>Add Habit</div>
         <div className={styles.habitsCreateTitle}>
           <label>Title : </label>
           <input name="title" onChange={handleChange}></input>
-        </div>
-        <div className={styles.habitsCreateTitle}>
-          <label>Schedule From : </label>
-          <DatePicker
-                selected={scheduleTime}
-                onChange={scheduleTimeChangeHandler}
-                showTimeSelect
-                timeFormat="HH:mm"
-                className={styles.datePickerInput}
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-              />
         </div>
         <div className={styles.dropdown}>
           <label htmlFor="dropdownSelect">Select a Frequency : </label>
@@ -95,7 +71,6 @@ function Habits() {
             <option value="WeekEnd">WeekEnd</option>
           </select>
         </div>
-
         <div className={styles.addHabitsButtons}>
           <button onClick={onSubmitHandler}>Add Habit</button>
         </div>
