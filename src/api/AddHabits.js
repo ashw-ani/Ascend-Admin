@@ -16,7 +16,7 @@ const AddHabits = async (habbitData) => {
     };
   
     const response = await fetch(
-      "https://ascend-server.onrender.com/api/admin/habits/addHabit",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/habits/addHabit`,
       requestOptions
     );
     

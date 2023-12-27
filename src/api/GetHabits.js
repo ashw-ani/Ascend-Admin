@@ -1,6 +1,6 @@
 const GetHabits = async (type, search) => {
     const data = await fetch(
-      `https://ascend-server.onrender.com/api/admin/habits/getHabits`
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/habits/getHabits`
     );
   
     const result = await data.json();

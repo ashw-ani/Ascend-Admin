@@ -1,6 +1,6 @@
 const getCourses = async (type, search) => {
   const data = await fetch(
-    `https://ascend-server.onrender.com/api/admin/course/all?tier=${type}&search=${search}`
+    `${process.env.REACT_APP_SERVER_URL}/api/admin/course/all?tier=${type}&search=${search}`
   );
 
   const result = await data.json();

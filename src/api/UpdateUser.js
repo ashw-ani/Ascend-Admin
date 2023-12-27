@@ -12,7 +12,7 @@ const UpdateUser = async (user) => {
       redirect: 'follow'
     };
     
-    const Users = await fetch("https://ascend-server.onrender.com/api/admin/contacts/updateDetails", requestOptions);
+    const Users = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/admin/contacts/updateDetails`, requestOptions);
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));

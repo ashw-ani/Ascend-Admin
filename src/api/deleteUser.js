@@ -16,7 +16,7 @@ const deleteUser = async (_id) => {
     };
   
     const Users = await fetch(
-      "https://ascend-server.onrender.com/api/admin/contacts/deleteContact",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/contacts/deleteContact`,
       requestOptions
     );
     //   .then(response => response.text())

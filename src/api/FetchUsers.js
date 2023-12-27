@@ -27,7 +27,7 @@ const FetchUsers = async (findUser, type,selectPage) => {
 
 
   const Users = await fetch(
-    "https://ascend-server.onrender.com/api/admin/contacts/getDetails",
+    `${process.env.REACT_APP_SERVER_URL}/api/admin/contacts/getDetails`,
     requestOptions
   );
   //   .then(response => response.text())

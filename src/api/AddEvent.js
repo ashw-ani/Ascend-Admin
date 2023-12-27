@@ -16,7 +16,7 @@ const AddEvents = async (eventData) => {
     };
   
     const response = await fetch(
-      "https://ascend-server.onrender.com/api/admin/events/addEvent",
+      `${process.env.REACT_APP_SERVER_URL}api/admin/events/addEvent`,
       requestOptions
     );
     

@@ -10,7 +10,7 @@ const FetchTeams = async () => {
     };
   
     const Teams = await fetch(
-      "https://ascend-server.onrender.com/api/admin/teams/fetch",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/teams/fetch`,
       requestOptions
     );
     const data = await Teams.json();

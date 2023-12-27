@@ -9,9 +9,9 @@ const DashboardInfo = async () => {
       headers: myHeaders,
       redirect: "follow",
     };
-  
+    console.log(process.env.REACT_APP_SERVER_URL);
     const Users = await fetch(
-      "https://ascend-server.onrender.com/api/admin/dashboard",
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/dashboard`,
       requestOptions
     );
     //   .then(response => response.text())

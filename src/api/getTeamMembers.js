@@ -10,7 +10,7 @@ const FetchTeamMembers = async (teamName) => {
     };
   
     const TeamMembers = await fetch(
-      `https://ascend-server.onrender.com/api/admin/teams/getTeamMembers?name=${teamName}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/admin/teams/getTeamMembers?name=${teamName}`,
       requestOptions
     );
     const data = await TeamMembers.json();

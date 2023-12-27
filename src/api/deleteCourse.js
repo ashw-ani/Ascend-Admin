@@ -16,7 +16,7 @@ const DeleteCourse = async (_id) => {
   };
 
   const Users = await fetch(
-    "https://ascend-server.onrender.com/api/admin/course/delete",
+    `${process.env.REACT_APP_SERVER_URL}/api/admin/course/delete`,
     requestOptions
   );
   //   .then(response => response.text())
