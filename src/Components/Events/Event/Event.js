@@ -48,6 +48,7 @@ const Events = (props) => {
           <div className={styles.cardWrapper}>
             {events.map((event) => (
               <EventCard
+              setEditPage={props.setEditPage}
               _id={event._id}
                 name={event.name}
                 description={event.description}
