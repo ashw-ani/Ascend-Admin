@@ -58,10 +58,25 @@
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 2px;
 }
+.eachHabit{
+    display: flex;
+    justify-content: space-between;
+    width: 6%;
+}
 .eachHabitDiv{
     padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: #161a37;
     color: white;
     border-radius: 8px;
     margin: 0.5rem;
+}
+.eachHabitEdit:hover{
+    cursor: pointer;
+}
+.eachHabitDelete:hover{
+    cursor: pointer;
 }
